@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cddmmvuqlsq7f"]
+
+[ext_resource type="Texture2D" uid="uid://bqiuynqlbh6wl" path="res://Assets/Sprites/Log_Cabin.png" id="1_okrnj"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+z_index = 7
+position = Vector2(4, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 7
+position = Vector2(107, 113)
+texture = ExtResource("1_okrnj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = 8
+y_sort_enabled = true
+polygon = PackedVector2Array(44, 71, 44, 173, 49, 195, 49, 207, 110, 208, 112, 188, 169, 187, 173, 146, 162, 142, 162, 125, 166, 129, 168, 71, 105, 70)
