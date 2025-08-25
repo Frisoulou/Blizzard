@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfa141ybeg5bx"]
+
+[ext_resource type="PackedScene" uid="uid://dxphaxq7vcop2" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+speed = 100.0
+
+[node name="RemoteCamera" parent="Player" index="2"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(19, -23, 20, 31, 144, 38, 153, -36, 76, -67, 61, -60, 61, -59)
+
+[editable path="Player"]

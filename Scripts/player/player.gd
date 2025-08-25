@@ -1,18 +1,37 @@
 extends CharacterBody2D
 
+@export var speed = 300.0
 
-const SPEED = 130.0
-
-func _physics_process(delta: float) -> void:
-
-	Input.get_action_stre
+func _process(delta: float) -> void:
+	###########################################################
+	###The following chunk will handle the player movement :###
+	###########################################################
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("up", "down","left","right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	#1. Define a direction vector that will store the direction
+	var direction = Vector2.ZERO
+	if Input.is_action_pressed("right"):
+		direction.x += 1
+	if Input.is_action_pressed("left"):
+		direction.x -= 1
+	if Input.is_action_pressed("down"):
+		direction.y += 1
+	if Input.is_action_pressed("up"):
+		direction.y -= 1
+	
+	#2. Apply normalization to the vector to avoid moving faster in diagonal
+	if direction.length() > 0:
+		direction = direction.normalized() * speed
+	
+	#3. Apply movement
+	position += direction * delta
+	
 	move_and_slide()
+	
+	###########################################################
+	###The following chunk will handle the player attack :  ###
+	###########################################################
+	if Input.is_action_pressed("left_click"):
+		$AnimatedSprite2D.play("Attack")
+	
+	if $AnimatedSprite2D.animation_finished:
+		$AnimatedSprite2D.play("Idle")
