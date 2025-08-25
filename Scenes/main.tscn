@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxphaxq7vcop2" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://cdchoh4k1slt2" path="res://Assets/Sprites/seasonal sample (winter).png" id="2_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://cddmmvuqlsq7f" path="res://Scenes/house.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" path="res://Scenes/house.tscn" id="3_8gbba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("2_bo1nx")
@@ -245,6 +245,9 @@ speed = 100.0
 
 [node name="RemoteCamera" parent="Player" index="2"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="Attacking" parent="Player/StateMachine" index="3" node_paths=PackedStringArray("tilemap")]
+tilemap = NodePath("../../../TileMap")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
