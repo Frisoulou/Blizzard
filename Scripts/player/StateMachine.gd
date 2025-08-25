@@ -4,8 +4,6 @@ extends Node
 var current_state = State
 var states : Dictionary = {}
 
-@export var portal : Area2D
-
 func _ready() -> void:
 	for child in get_children():
 		if child is State:

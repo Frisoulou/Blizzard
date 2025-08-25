@@ -1,8 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=32 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://bpndn1ugq6jgo" path="res://Assets/Sprites/player_test_animation.png" id="2_xpcdj"]
 [ext_resource type="Script" uid="uid://chf3t6jkcdinp" path="res://Scripts/player/StateMachine.gd" id="3_xpcdj"]
+[ext_resource type="Script" uid="uid://dwh8j3aljk0uh" path="res://Scripts/player/StateIdle.gd" id="4_htcer"]
+[ext_resource type="Script" uid="uid://b6a3iqtgmy701" path="res://Scripts/player/StateWalking.gd" id="4_mtuoh"]
+[ext_resource type="Script" uid="uid://ngi4ttiey71p" path="res://Scripts/player/StateAttacking.gd" id="6_dd0ac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3d8c"]
 atlas = ExtResource("2_xpcdj")
@@ -195,13 +198,19 @@ shape = SubResource("RectangleShape2D_hnuln")
 
 [node name="RemoteCamera" type="RemoteTransform2D" parent="."]
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_xpcdj")
+initial_state = NodePath("Walking")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_htcer")
+player = NodePath("../..")
 
-[node name="Walking" type="Node" parent="StateMachine"]
+[node name="Walking" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_mtuoh")
+player = NodePath("../..")
 
 [node name="Running" type="Node" parent="StateMachine"]
 
 [node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("6_dd0ac")
