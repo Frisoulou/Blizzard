@@ -7,7 +7,7 @@ func Exit():
 	pass
 
 func Enter():
-	print("changed state : walking")
+	print("Changed state : walking")
 	pass
 
 func Update(delta: float):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfa141ybeg5bx"]
+[gd_scene load_steps=7 format=3 uid="uid://bfa141ybeg5bx"]
 
 [ext_resource type="PackedScene" uid="uid://dxphaxq7vcop2" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://cdchoh4k1slt2" path="res://Assets/Sprites/seasonal sample (winter).png" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cddmmvuqlsq7f" path="res://Scenes/house.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://qm6p5ghqip04" path="res://Scenes/Ennemies/Wolf/Wolf.tscn" id="4_jjvhh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("2_bo1nx")
@@ -272,6 +273,10 @@ scale = Vector2(0.8, 0.8)
 
 [node name="CollisionPolygon2D" parent="House" index="1"]
 polygon = PackedVector2Array(44, 71, 43.75, 176.25, 55, 208.75, 53.75, 145, 160, 145, 160, 167.5, 102.5, 167.5, 102.5, 210, 111.25, 210, 111.25, 188.75, 170, 188.75, 168, 71, 106.25, 70)
+
+[node name="Wolf" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(-79, -57)
+scale = Vector2(0.7, 0.7)
 
 [editable path="Player"]
 [editable path="House"]
