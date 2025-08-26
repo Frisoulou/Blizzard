@@ -1,6 +1,7 @@
 extends State
 
 @export var player : CharacterBody2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
 func Exit():
 	pass
@@ -10,6 +11,8 @@ func Enter():
 	pass
 
 func Update(delta: float):
+	animated_sprite_2d.play("Walking")
+	
 	###########################################################
 	###The following chunk will handle the player movement :###
 	###########################################################
@@ -29,6 +32,11 @@ func Update(delta: float):
 	#3. Apply movement
 	player.position += direction * delta
 	
+	#4. Flip the player sprite based on direction
+	if direction.x > 0:
+		animated_sprite_2d.flip_h = false
+	if direction.x < 0:
+		animated_sprite_2d.flip_h = true
 	
 	############################################################
 	###The following chunk will handle change between state :###

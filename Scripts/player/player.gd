@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var speed = 300.0
-var wood: int = 0
 var near: bool = false
 
 

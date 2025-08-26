@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxphaxq7vcop2" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://cdchoh4k1slt2" path="res://Assets/Sprites/seasonal sample (winter).png" id="2_bo1nx"]
-[ext_resource type="PackedScene" path="res://Scenes/house.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cddmmvuqlsq7f" path="res://Scenes/house.tscn" id="3_8gbba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("2_bo1nx")
@@ -266,8 +266,12 @@ layer_2/y_sort_enabled = true
 layer_2/z_index = 2
 layer_2/tile_data = PackedInt32Array(-65544, 851968, 4, -8, 851968, 5, -262132, 851968, 4, -196596, 851968, 5, -524291, 851968, 4, -458755, 851968, 5, 196624, 851968, 4, 262160, 851968, 5, 327677, 851968, 4, 393213, 851968, 5, -720882, 851968, 4, -655346, 851968, 5, -786428, 851968, 4, -720892, 851968, 5, -65512, 851968, 4, 24, 851968, 5, -393227, 851968, 4, -327691, 851968, 5, -851972, 851968, 4, -786436, 851968, 5, 196600, 851968, 4, 262136, 851968, 5, 327688, 851968, 4, 393224, 851968, 5, -393195, 851968, 4, -327659, 851968, 5, -851944, 851968, 4, -786408, 851968, 5, -589850, 851968, 4, -524314, 851968, 5)
 
-[node name="StaticBody2D" parent="." instance=ExtResource("3_8gbba")]
+[node name="House" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(-38, -161)
 scale = Vector2(0.8, 0.8)
 
+[node name="CollisionPolygon2D" parent="House" index="1"]
+polygon = PackedVector2Array(44, 71, 43.75, 176.25, 55, 208.75, 53.75, 145, 160, 145, 160, 167.5, 102.5, 167.5, 102.5, 210, 111.25, 210, 111.25, 188.75, 170, 188.75, 168, 71, 106.25, 70)
+
 [editable path="Player"]
+[editable path="House"]
