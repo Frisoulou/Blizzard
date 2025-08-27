@@ -1,7 +1,7 @@
 extends State
 
 @export var player : CharacterBody2D
-@onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../../Marker2D/AnimatedSprite2D"
 
 func Exit():
 	pass

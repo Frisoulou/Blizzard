@@ -1,9 +1,9 @@
 extends State
 
 @onready var player: CharacterBody2D = $"../.."
-@onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var timer: Timer = $Timer
 @onready var player_ui: CanvasLayer = $"../../Player_UI"
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../../Marker2D/AnimatedSprite2D"
 
 
 func Exit():

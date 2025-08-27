@@ -33,10 +33,14 @@ sources/1 = SubResource("TileSetAtlasSource_kry3j")
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 speed = 100.0
 
-[node name="RemoteCamera" parent="Player" index="2"]
+[node name="RemoteCamera" parent="Player" index="1"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="TextureRect" parent="Player/Player_UI/Panel" index="1"]
+layout_mode = 0
+
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(7, -4)
 zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]

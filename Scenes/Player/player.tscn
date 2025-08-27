@@ -84,26 +84,36 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
-size = Vector2(12, 19)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gk6dx"]
+radius = 13.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd0ac"]
-size = Vector2(24, 15)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
+size = Vector2(13, 25.5)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 script = ExtResource("1_a3d8c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -5)
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+position = Vector2(-6, -2)
 sprite_frames = SubResource("SpriteFrames_ks1b7")
 animation = &"Attack"
 autoplay = "Idle"
+frame = 2
+frame_progress = 1.0
 
-[node name="PlayerCollision2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hnuln")
+[node name="Area2D" type="Area2D" parent="Marker2D"]
+position = Vector2(7, -3)
+
+[node name="AxeCollision2D" type="CollisionShape2D" parent="Marker2D/Area2D"]
+position = Vector2(-11, 3)
+shape = SubResource("CircleShape2D_gk6dx")
+script = ExtResource("7_0u5uq")
 
 [node name="RemoteCamera" type="RemoteTransform2D" parent="."]
+position = Vector2(7, -4)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_xpcdj")
@@ -126,34 +136,7 @@ script = ExtResource("6_dd0ac")
 wait_time = 0.5
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="AxeCollision2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(6, 5.5)
-shape = SubResource("RectangleShape2D_dd0ac")
-script = ExtResource("7_0u5uq")
-
 [node name="Player_UI" parent="." instance=ExtResource("8_jlvik")]
-
-[node name="TextureRect" parent="Player_UI/Panel" index="1"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 76.0
-offset_bottom = 81.0
-
-[node name="WoodDisplay" parent="Player_UI/Panel" index="2"]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 85.0
-offset_top = 4.0
-offset_right = 125.0
-offset_bottom = 73.0
-grow_horizontal = 1
 
 [node name="PlayerStatsManager" type="Node" parent="."]
 script = ExtResource("9_gk6dx")
@@ -162,12 +145,14 @@ script = ExtResource("9_gk6dx")
 
 [node name="HungryTimer" type="Timer" parent="PlayerStatsManager"]
 
+[node name="PlayerCollision2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_hnuln")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="body_entered" from="Marker2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Marker2D/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="." method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="PlayerStatsManager" method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/HungryTimer" to="PlayerStatsManager" method="_on_hungry_timer_timeout"]
-
-[editable path="Player_UI"]
