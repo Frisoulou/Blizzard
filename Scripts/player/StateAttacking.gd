@@ -1,10 +1,10 @@
 extends State
 
-@export var player : CharacterBody2D
+@onready var player: CharacterBody2D = $"../.."
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var timer: Timer = $Timer
-@onready var inventory: Node = $"../../Inventory"
-@export var tilemap: TileMap
+@onready var player_ui: CanvasLayer = $"../../Player_UI"
+
 
 func Exit():
 	pass
@@ -21,14 +21,7 @@ func Update(delta: float):
 
 func Physics_update(delta: float):
 	pass
-	
-	
 
 func _on_timer_timeout() -> void:
+	player_ui.add_wood()
 	Transitioned.emit(self, "Idle")
-	
-	if player.near:
-		var pos: Vector2i = tilemap.local_to_map(player.position)
-		pos += Vector2i(1, 0)
-		tilemap.set_cell(2,pos,0,Vector2(-1,-1))
-		inventory.add_wood()

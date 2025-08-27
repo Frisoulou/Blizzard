@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://b6a3iqtgmy701" path="res://Scripts/player/StateWalking.gd" id="4_mtuoh"]
 [ext_resource type="Script" uid="uid://ngi4ttiey71p" path="res://Scripts/player/StateAttacking.gd" id="6_dd0ac"]
 [ext_resource type="Script" uid="uid://bfktk7agwxebt" path="res://Scripts/player/AxeCollision.gd" id="7_0u5uq"]
-[ext_resource type="Script" uid="uid://ccn3hvw7jscgi" path="res://Scripts/player/inventory.gd" id="8_gk6dx"]
-[ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="8_jlvik"]
+[ext_resource type="PackedScene" uid="uid://cqwmg6gsjheoo" path="res://Scenes/UI/Player_UI.tscn" id="8_jlvik"]
+[ext_resource type="Script" uid="uid://cr8epfmtmlqy" path="res://Scripts/player/player_stats_manager.gd" id="9_gk6dx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhyir"]
 atlas = ExtResource("2_gk6dx")
@@ -119,9 +119,8 @@ player = NodePath("../..")
 
 [node name="Running" type="Node" parent="StateMachine"]
 
-[node name="Attacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Attacking" type="Node" parent="StateMachine"]
 script = ExtResource("6_dd0ac")
-player = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="StateMachine/Attacking"]
 wait_time = 0.5
@@ -134,23 +133,41 @@ position = Vector2(6, 5.5)
 shape = SubResource("RectangleShape2D_dd0ac")
 script = ExtResource("7_0u5uq")
 
-[node name="Inventory" type="Node" parent="."]
-script = ExtResource("8_gk6dx")
+[node name="Player_UI" parent="." instance=ExtResource("8_jlvik")]
 
-[node name="Wood" type="Sprite2D" parent="."]
-z_index = 10
-position = Vector2(-195, -102)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("8_jlvik")
+[node name="TextureRect" parent="Player_UI/Panel" index="1"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 76.0
+offset_bottom = 81.0
 
-[node name="WoodCounter" type="Label" parent="."]
-offset_left = -175.0
-offset_top = -113.0
-offset_right = -105.0
-offset_bottom = -90.0
-text = "No wood"
+[node name="WoodDisplay" parent="Player_UI/Panel" index="2"]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 85.0
+offset_top = 4.0
+offset_right = 125.0
+offset_bottom = 73.0
+grow_horizontal = 1
+
+[node name="PlayerStatsManager" type="Node" parent="."]
+script = ExtResource("9_gk6dx")
+
+[node name="ColdTimer" type="Timer" parent="PlayerStatsManager"]
+
+[node name="HungryTimer" type="Timer" parent="PlayerStatsManager"]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="." method="_on_cold_timer_timeout"]
+[connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="PlayerStatsManager" method="_on_cold_timer_timeout"]
+[connection signal="timeout" from="PlayerStatsManager/HungryTimer" to="PlayerStatsManager" method="_on_hungry_timer_timeout"]
+
+[editable path="Player_UI"]

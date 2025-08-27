@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqwmg6gsjheoo"]
+
+[ext_resource type="Script" uid="uid://bikq0c2qwn83q" path="res://Scripts/player/UI/player_ui.gd" id="1_sjr6g"]
+[ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="1_uwpe7"]
+
+[sub_resource type="Theme" id="Theme_sjr6g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afipn"]
+bg_color = Color(0, 0.290167, 0.144619, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjr6g"]
+bg_color = Color(0, 0.290196, 0.145098, 1)
+
+[node name="Player_UI" type="CanvasLayer"]
+script = ExtResource("1_sjr6g")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 197.0
+offset_bottom = 258.0
+
+[node name="Coldness" type="ProgressBar" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.5
+offset_top = -36.0
+offset_right = 84.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_sjr6g")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/background = SubResource("StyleBoxFlat_afipn")
+value = 100.0
+
+[node name="ColdLabel" type="Label" parent="Panel/Coldness"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.5
+offset_top = -48.0
+offset_right = 19.5
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Cold"
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 86.0
+offset_bottom = 85.0
+texture = ExtResource("1_uwpe7")
+expand_mode = 1
+
+[node name="WoodDisplay" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.593
+anchor_top = 0.167
+anchor_right = 0.593
+anchor_bottom = 0.167
+offset_left = -20.077
+offset_top = -34.416
+offset_right = 19.923
+offset_bottom = 34.584
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Hungriness" type="ProgressBar" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.5
+offset_top = -88.0
+offset_right = 83.5
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_sjr6g")
+value = 100.0
+
+[node name="Hungry" type="Label" parent="Panel/Hungriness"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.5
+offset_top = -25.0
+offset_right = 28.5
+offset_bottom = -2.0
+grow_horizontal = 2
+text = "Hungry"
