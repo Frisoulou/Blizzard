@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bqiuynqlbh6wl" path="res://Assets/Sprites/Log_Cabin.png" id="1_okrnj"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
-z_index = 7
+z_index = 70
+y_sort_enabled = true
 position = Vector2(4, 25)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
