@@ -4,7 +4,11 @@ extends State
 @onready var timer: Timer = $Timer
 @onready var player_ui: CanvasLayer = $"../../Player_UI"
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../Marker2D/AnimatedSprite2D"
+@onready var axe_collision_2d: CollisionShape2D = $"../../Marker2D/Area2D/AxeCollision2D"
+@onready var state_machine: Node = $".."
 
+var tree_is_near = false
+var nearest_tree = Node2D
 
 func Exit():
 	pass
@@ -13,6 +17,9 @@ func Enter():
 	print("changed state : attack")
 	animated_sprite_2d.play("Attack")
 	
+	if tree_is_near and nearest_tree and nearest_tree is Node2D:
+		nearest_tree.queue_free()
+		player_ui.add_wood()
 	if timer.is_stopped():
 		timer.start()
 
@@ -23,5 +30,11 @@ func Physics_update(delta: float):
 	pass
 
 func _on_timer_timeout() -> void:
-	player_ui.add_wood()
 	Transitioned.emit(self, "Idle")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	tree_is_near = true
+	nearest_tree = body
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	tree_is_near = false

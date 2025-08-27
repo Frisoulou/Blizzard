@@ -150,8 +150,8 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_hnuln")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="body_entered" from="Marker2D/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Marker2D/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="." method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="PlayerStatsManager" method="_on_cold_timer_timeout"]
