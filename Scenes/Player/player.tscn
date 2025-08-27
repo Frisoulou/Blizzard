@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=22 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bfktk7agwxebt" path="res://Scripts/player/AxeCollision.gd" id="7_0u5uq"]
 [ext_resource type="Script" uid="uid://ccn3hvw7jscgi" path="res://Scripts/player/inventory.gd" id="8_gk6dx"]
 [ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="8_jlvik"]
+[ext_resource type="Script" uid="uid://cmth222rbhlrf" path="res://Scenes/Player/hp.gd" id="10_jhyir"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhyir"]
 atlas = ExtResource("2_gk6dx")
@@ -149,6 +150,9 @@ offset_top = -113.0
 offset_right = -105.0
 offset_bottom = -90.0
 text = "No wood"
+
+[node name="HP" type="Node" parent="."]
+script = ExtResource("10_jhyir")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
