@@ -33,9 +33,9 @@ func Update(delta: float):
 	player.position += direction * delta
 	
 	#4. Flip the player sprite based on direction
-	if direction.x > 0:
-		animated_sprite_2d.flip_h = false
 	if direction.x < 0:
+		animated_sprite_2d.flip_h = false
+	if direction.x > 0:
 		animated_sprite_2d.flip_h = true
 	
 	############################################################
