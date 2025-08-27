@@ -71,5 +71,26 @@ scale = Vector2(0.7, 0.7)
 [node name="StaticBody2D" parent="." instance=ExtResource("5_kry3j")]
 position = Vector2(-114, 25)
 
+[node name="StaticBody2D2" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(-135, -100)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(21, 89)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(180, 42)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(290, -63)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(182, -140)
+
+[node name="StaticBody2D7" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(-203, -33)
+
+[node name="StaticBody2D8" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(-53, -195)
+
 [editable path="Player"]
 [editable path="House"]
