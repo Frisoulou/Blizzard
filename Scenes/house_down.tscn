@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo2ese5yo2w1l"]
+
+[ext_resource type="Texture2D" uid="uid://dk2r1csxkmi7q" path="res://Assets/Sprites/house_down_AE.png" id="1_ycxfr"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(68, -69)
+scale = Vector2(1.41667, 1.41667)
+texture = ExtResource("1_ycxfr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

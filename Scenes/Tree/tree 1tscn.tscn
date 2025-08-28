@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5s8q1a2a08yh"]
+
+[ext_resource type="Texture2D" uid="uid://bhl1tb6t0smon" path="res://Assets/Sprites/arbre.png" id="1_wlseo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30pjl"]
+size = Vector2(25, 32)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-141, -26)
+scale = Vector2(0.319048, 0.28)
+texture = ExtResource("1_wlseo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-141, -12)
+shape = SubResource("RectangleShape2D_30pjl")

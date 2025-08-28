@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cddmmvuqlsq7f"]
 
-[ext_resource type="Texture2D" uid="uid://bqiuynqlbh6wl" path="res://Assets/Sprites/Log_Cabin.png" id="1_okrnj"]
+[ext_resource type="Texture2D" uid="uid://cobeikjqgqr" path="res://Assets/Sprites/house_up2.png" id="1_okrnj"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 z_index = 7
@@ -8,8 +8,8 @@ position = Vector2(4, 25)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 7
-position = Vector2(107, 113)
-scale = Vector2(1.00333, 1)
+position = Vector2(107, 118)
+scale = Vector2(1.91833, 1.91196)
 texture = ExtResource("1_okrnj")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
