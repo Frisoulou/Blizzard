@@ -27,3 +27,13 @@ func _on_cold_timer_timeout() -> void:
 
 func _on_hungry_timer_timeout() -> void:
 	hungriness.value -= 1
+
+#######################
+###Managing wood    ###
+#######################
+@export var wood: int = 0
+@onready var wood_display: Label = $"../Player_UI/Panel/WoodDisplay"
+
+func add_wood():
+	wood += 1
+	wood_display.text = str(wood)

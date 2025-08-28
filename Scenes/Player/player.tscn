@@ -143,6 +143,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Player_UI" parent="." instance=ExtResource("8_jlvik")]
+script = null
 
 [node name="HP_bar" type="Label" parent="Player_UI"]
 modulate = Color(1, 0, 0, 1)
