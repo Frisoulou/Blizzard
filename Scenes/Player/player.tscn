@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=23 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
@@ -9,10 +9,11 @@
 [ext_resource type="Script" uid="uid://bfktk7agwxebt" path="res://Scripts/player/AxeCollision.gd" id="7_0u5uq"]
 [ext_resource type="PackedScene" uid="uid://cqwmg6gsjheoo" path="res://Scenes/UI/Player_UI.tscn" id="8_jlvik"]
 [ext_resource type="Script" uid="uid://cr8epfmtmlqy" path="res://Scripts/player/player_stats_manager.gd" id="9_gk6dx"]
+[ext_resource type="PackedScene" uid="uid://4w3yih1y14ko" path="res://Scenes/Player/player_stats_manager_debug_panel.tscn" id="10_74mp2"]
 [ext_resource type="Script" uid="uid://bgjvo143ly1n4" path="res://Scripts/player/UI/hp.gd" id="10_jhyir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
-size = Vector2(13, 25.5)
+size = Vector2(12.5, 14.75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhyir"]
 atlas = ExtResource("2_gk6dx")
@@ -93,10 +94,22 @@ radius = 13.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
+collision_layer = 5
 script = ExtResource("1_a3d8c")
 
+[node name="PlayerStatsManager" type="Node" parent="."]
+script = ExtResource("9_gk6dx")
+debug_mode = true
+speed = 100.0
+damage_point = 10.0
+cold_speed = 0.75
+
+[node name="ColdTimer" type="Timer" parent="PlayerStatsManager"]
+
+[node name="HungryTimer" type="Timer" parent="PlayerStatsManager"]
+
 [node name="PlayerCollision2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(-0.25, 4.375)
 shape = SubResource("RectangleShape2D_hnuln")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -145,6 +158,24 @@ one_shot = true
 [node name="Player_UI" parent="." instance=ExtResource("8_jlvik")]
 script = null
 
+[node name="LevelingUpPanel" parent="Player_UI" index="1" node_paths=PackedStringArray("player", "stats_debug_panel")]
+z_index = 1
+player = NodePath("../..")
+stats_debug_panel = NodePath("../StatsDebugPanel")
+
+[node name="SpeedUp" parent="Player_UI/LevelingUpPanel" index="2"]
+offset_left = 262.0
+offset_top = 135.0
+offset_right = -332.0
+offset_bottom = -52.0
+
+[node name="AnimatedSprite2D" parent="Player_UI/LevelingUpPanel/SpeedUp" index="0"]
+position = Vector2(93, 98.1534)
+scale = Vector2(0.291925, 0.289025)
+
+[node name="StatsDebugPanel" parent="Player_UI" node_paths=PackedStringArray("player") instance=ExtResource("10_74mp2")]
+player = NodePath("../..")
+
 [node name="HP_bar" type="Label" parent="Player_UI"]
 modulate = Color(1, 0, 0, 1)
 z_index = 1000
@@ -155,22 +186,19 @@ offset_bottom = 69.0
 theme_override_font_sizes/font_size = 40
 text = "3/3"
 
-[node name="PlayerStatsManager" type="Node" parent="."]
-script = ExtResource("9_gk6dx")
-
-[node name="ColdTimer" type="Timer" parent="PlayerStatsManager"]
-
-[node name="HungryTimer" type="Timer" parent="PlayerStatsManager"]
-
 [node name="HP" type="Node" parent="." groups=["Player"]]
 script = ExtResource("10_jhyir")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="." method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="PlayerStatsManager" method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/HungryTimer" to="PlayerStatsManager" method="_on_hungry_timer_timeout"]
+[connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
+[connection signal="pressed" from="Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
+[connection signal="pressed" from="Player_UI/LevelingUpPanel/SpeedUp/ChoosedSpeed" to="Player_UI/LevelingUpPanel" method="_on_choosed_speed_pressed"]
 
 [editable path="Player_UI"]
+[editable path="Player_UI/LevelingUpPanel/DamageUp"]
+[editable path="Player_UI/LevelingUpPanel/SpeedUp"]

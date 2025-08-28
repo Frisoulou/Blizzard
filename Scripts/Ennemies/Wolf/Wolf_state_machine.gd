@@ -1,5 +1,7 @@
 extends Node
 
+@export var debug_mode = false
+
 @export var initial_state : State
 var current_state = State
 var states : Dictionary = {}
@@ -39,5 +41,8 @@ func on_child_transition(state, new_state_name):
 		current_state.Exit()
 	
 	new_state.Enter()
+	
+	if debug_mode:
+		new_state.Debug()
 	
 	current_state = new_state

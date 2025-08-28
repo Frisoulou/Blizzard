@@ -9,6 +9,9 @@ func Exit():
 func Enter():
 	pass
 
+func Debug():
+	pass
+
 func Update(delta: float):
 	pass
 

@@ -8,10 +8,13 @@ extends State
 
 var player = CharacterBody2D
 
+func Debug():
+	print("Wolf state : running")
+	pass
+
 func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 	animated_sprite_2d.play("Running")
-	print("Wolf state : running")
 	
 func _physics_process(delta: float) -> void:
 	var wolf_direction = player.global_position - wolf.global_position

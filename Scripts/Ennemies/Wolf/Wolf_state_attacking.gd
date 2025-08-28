@@ -5,8 +5,11 @@ extends State
 @export var attack_length : int = 35
 @onready var state_machine: Node = $".."
 
+func Debug():
+	print("Wolf state : walking")
+	pass
+
 func Enter():
-	print("Wolf state : attacking")
 	animated_sprite_2d.play("Attacking")
 	wolf.velocity = Vector2()
 	

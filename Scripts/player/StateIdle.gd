@@ -3,11 +3,11 @@ extends State
 @export var player : CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../Marker2D/AnimatedSprite2D"
 
-func Exit():
+func Debug():
+	print("changed state : idle")
 	pass
 
 func Enter():
-	print("changed state : idle")
 	pass
 
 func Update(delta: float):

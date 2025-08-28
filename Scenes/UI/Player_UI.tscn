@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqwmg6gsjheoo"]
+[gd_scene load_steps=9 format=3 uid="uid://cqwmg6gsjheoo"]
 
 [ext_resource type="Script" uid="uid://bikq0c2qwn83q" path="res://Scripts/player/UI/player_ui.gd" id="1_sjr6g"]
 [ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="1_uwpe7"]
+[ext_resource type="Script" uid="uid://db46dol2iupk7" path="res://Scripts/player/UI/leveling_up_panel.gd" id="3_1oy0g"]
+[ext_resource type="PackedScene" uid="uid://cqen7gt8u0m5f" path="res://Scenes/Player/Leveling_up/DamageUp.tscn" id="3_21470"]
+[ext_resource type="PackedScene" uid="uid://c0cgqkdxiidl2" path="res://Scenes/Player/Leveling_up/SpeedUp.tscn" id="4_1oy0g"]
 
 [sub_resource type="Theme" id="Theme_sjr6g"]
 
@@ -18,7 +21,7 @@ script = ExtResource("1_sjr6g")
 offset_left = 8.0
 offset_top = 10.0
 offset_right = 197.0
-offset_bottom = 258.0
+offset_bottom = 333.0
 
 [node name="Coldness" type="ProgressBar" parent="Panel"]
 layout_mode = 1
@@ -104,3 +107,112 @@ offset_right = 28.5
 offset_bottom = -2.0
 grow_horizontal = 2
 text = "Hungry"
+
+[node name="Experience" type="ProgressBar" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.5
+offset_top = -140.0
+offset_right = 83.5
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_sjr6g")
+max_value = 2.0
+
+[node name="ExperienceLabel" type="Label" parent="Panel/Experience"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -57.0
+offset_right = 58.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Level : 0"
+
+[node name="LevelingUpPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = -198.0
+offset_right = 396.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("3_1oy0g")
+
+[node name="Label" type="Label" parent="LevelingUpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -277.5
+offset_top = 28.0
+offset_right = 277.5
+offset_bottom = 130.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Congratulation, you leveled up !
+Please make a choice in the following :"
+
+[node name="DamageUp" parent="LevelingUpPanel" instance=ExtResource("3_21470")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 133.0
+offset_right = -553.0
+offset_bottom = -64.0
+
+[node name="SpeedUp" parent="LevelingUpPanel" instance=ExtResource("4_1oy0g")]
+layout_mode = 1
+offset_left = 259.0
+offset_top = 129.0
+offset_right = -342.0
+offset_bottom = -65.0
+
+[node name="DamageOption" type="Label" parent="LevelingUpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -362.0
+offset_top = 337.0
+offset_right = -149.0
+offset_bottom = 380.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Damage +15%"
+
+[node name="SpeedOption" type="Label" parent="LevelingUpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 337.0
+offset_right = 85.0
+offset_bottom = 380.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Speed +20%"
+
+[connection signal="pressed" from="LevelingUpPanel/DamageUp/ChoosedDamage" to="LevelingUpPanel" method="_on_choosed_damage_pressed"]
+[connection signal="pressed" from="LevelingUpPanel/SpeedUp/ChoosedSpeed" to="LevelingUpPanel" method="_on_choosed_speed_pressed"]
+
+[editable path="LevelingUpPanel/DamageUp"]
+[editable path="LevelingUpPanel/SpeedUp"]

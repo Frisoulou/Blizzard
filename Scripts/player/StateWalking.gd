@@ -3,12 +3,12 @@ extends State
 @export var player : CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../Marker2D/AnimatedSprite2D"
 @onready var marker_2d: Marker2D = $"../../Marker2D"
+@onready var player_stats_manager: Node = $"../../PlayerStatsManager"
 
-func Exit():
-	pass
+func Debug():
+	print("Changed state : walking")
 
 func Enter():
-	print("Changed state : walking")
 	pass
 
 func Update(delta: float):
@@ -29,7 +29,7 @@ func Update(delta: float):
 		direction.y -= 1
 	#2. Apply normalization to the vector to avoid moving faster in diagonal
 	if direction.length() > 0:
-		direction = direction.normalized() * player.speed
+		direction = direction.normalized() * player_stats_manager.speed
 	#3. Apply movement
 	player.position += direction * delta
 	

@@ -1,18 +1,112 @@
-[gd_scene load_steps=2 format=3 uid="uid://cddmmvuqlsq7f"]
+[gd_scene load_steps=15 format=3 uid="uid://cddmmvuqlsq7f"]
 
 [ext_resource type="Texture2D" uid="uid://cobeikjqgqr" path="res://Assets/Sprites/house_up2.png" id="1_okrnj"]
+[ext_resource type="Script" uid="uid://c11jjg5heevd3" path="res://Scripts/Others/House/House.gd" id="4_iqtyj"]
+[ext_resource type="Texture2D" uid="uid://dk2r1csxkmi7q" path="res://Assets/Sprites/house_down_AE.png" id="4_l3jqw"]
+[ext_resource type="Texture2D" uid="uid://c5iqhk3bid28f" path="res://Assets/Sprites/house_middle.png" id="5_gau5j"]
+[ext_resource type="Texture2D" uid="uid://cvtdqptr3fmj8" path="res://Assets/Sprites/CampFire-ezgif.com-gif-to-sprite-converter.png" id="5_xi0mm"]
 
-[node name="StaticBody2D" type="StaticBody2D"]
-z_index = 7
-position = Vector2(4, 25)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xi0mm"]
+radius = 58.0086
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 7
-position = Vector2(107, 118)
-scale = Vector2(1.91833, 1.91196)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu6dc"]
+atlas = ExtResource("5_xi0mm")
+region = Rect2(0, 0, 256, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3jqw"]
+atlas = ExtResource("5_xi0mm")
+region = Rect2(256, 0, 256, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gau5j"]
+atlas = ExtResource("5_xi0mm")
+region = Rect2(512, 0, 256, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ug6d"]
+atlas = ExtResource("5_xi0mm")
+region = Rect2(768, 0, 256, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmwq5"]
+atlas = ExtResource("5_xi0mm")
+region = Rect2(1024, 0, 256, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4svt"]
+atlas = ExtResource("5_xi0mm")
+region = Rect2(0, 432, 256, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttg8n"]
+atlas = ExtResource("5_xi0mm")
+region = Rect2(256, 432, 256, 432)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0h1dt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu6dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3jqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gau5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ug6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmwq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4svt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttg8n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="House" type="StaticBody2D"]
+
+[node name="HouseDown" type="Sprite2D" parent="."]
+texture = ExtResource("4_l3jqw")
+
+[node name="HouseMiddle" type="Sprite2D" parent="."]
+texture = ExtResource("5_gau5j")
+
+[node name="HouseUp" type="Sprite2D" parent="."]
+z_index = 2
 texture = ExtResource("1_okrnj")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-z_index = 8
-y_sort_enabled = true
-polygon = PackedVector2Array(44, 71, 44, 173, 49, 195, 49, 207, 110, 208, 112, 188, 169, 187, 173, 146, 162, 142, 162, 125, 166, 129, 168, 71, 105, 70)
+z_index = 2
+polygon = PackedVector2Array(-33, 41, -38, 41, -38, -19, 35, -19, 36, 40, 8, 40, 8, 33, 29, 33, 29, 22, -33, 22)
+
+[node name="HomeZone" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("4_iqtyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeZone"]
+light_mask = 4
+position = Vector2(4, 65)
+shape = SubResource("CircleShape2D_xi0mm")
+
+[node name="Label" type="Label" parent="HomeZone"]
+visible = false
+offset_left = 8.0
+offset_top = 41.0
+offset_right = 92.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Press \"E\" to use wood"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(13, 72)
+scale = Vector2(0.0625, 0.0625)
+sprite_frames = SubResource("SpriteFrames_0h1dt")
+autoplay = "default"
+frame_progress = 0.462056
+
+[connection signal="body_entered" from="HomeZone" to="HomeZone" method="_on_body_entered"]
+[connection signal="body_exited" from="HomeZone" to="HomeZone" method="_on_body_exited"]
