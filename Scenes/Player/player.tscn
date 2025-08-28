@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://cr8epfmtmlqy" path="res://Scripts/player/player_stats_manager.gd" id="9_gk6dx"]
 [ext_resource type="Script" path="res://Scripts/player/UI/hp.gd" id="10_jhyir"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
+size = Vector2(13, 25.5)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhyir"]
 atlas = ExtResource("2_gk6dx")
 region = Rect2(0, 32, 32, 32)
@@ -88,12 +91,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gk6dx"]
 radius = 13.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
-size = Vector2(13, 25.5)
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 script = ExtResource("1_a3d8c")
+
+[node name="PlayerCollision2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_hnuln")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
@@ -109,6 +113,7 @@ frame_progress = 1.0
 position = Vector2(7, -3)
 
 [node name="AxeCollision2D" type="CollisionShape2D" parent="Marker2D/Area2D"]
+light_mask = 2
 position = Vector2(-11, 3)
 shape = SubResource("CircleShape2D_gk6dx")
 script = ExtResource("7_0u5uq")
@@ -146,11 +151,7 @@ script = ExtResource("9_gk6dx")
 
 [node name="HungryTimer" type="Timer" parent="PlayerStatsManager"]
 
-[node name="PlayerCollision2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_hnuln")
-
-[node name="HP" type="Node" parent="."]
+[node name="HP" type="Node" parent="." groups=["Player"]]
 script = ExtResource("10_jhyir")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

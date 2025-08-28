@@ -27,3 +27,4 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = false
 	if wolf_direction.x < 0:
 		animated_sprite_2d.flip_h = true
+	pass

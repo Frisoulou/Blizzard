@@ -18,8 +18,9 @@ func Enter():
 	animated_sprite_2d.play("Attack")
 	
 	if tree_is_near and nearest_tree and nearest_tree is Node2D:
-		nearest_tree.queue_free()
-		player_ui.add_wood()
+		if nearest_tree.is_in_group("Tree"):
+			nearest_tree.queue_free()
+			player_ui.add_wood()
 	if timer.is_stopped():
 		timer.start()
 
@@ -32,9 +33,10 @@ func Physics_update(delta: float):
 func _on_timer_timeout() -> void:
 	Transitioned.emit(self, "Idle")
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("entered")
 	tree_is_near = true
 	nearest_tree = body
 func _on_area_2d_body_exited(body: Node2D) -> void:
+	print("exiteds")
 	tree_is_near = false
