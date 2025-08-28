@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bfktk7agwxebt" path="res://Scripts/player/AxeCollision.gd" id="7_0u5uq"]
 [ext_resource type="PackedScene" uid="uid://cqwmg6gsjheoo" path="res://Scenes/UI/Player_UI.tscn" id="8_jlvik"]
 [ext_resource type="Script" uid="uid://cr8epfmtmlqy" path="res://Scripts/player/player_stats_manager.gd" id="9_gk6dx"]
-[ext_resource type="Script" path="res://Scripts/player/UI/hp.gd" id="10_jhyir"]
+[ext_resource type="Script" uid="uid://bgjvo143ly1n4" path="res://Scripts/player/UI/hp.gd" id="10_jhyir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
 size = Vector2(13, 25.5)
@@ -144,6 +144,16 @@ one_shot = true
 
 [node name="Player_UI" parent="." instance=ExtResource("8_jlvik")]
 
+[node name="HP_bar" type="Label" parent="Player_UI"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1000
+offset_left = 1181.0
+offset_top = 28.0
+offset_right = 1252.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 40
+text = "3/3"
+
 [node name="PlayerStatsManager" type="Node" parent="."]
 script = ExtResource("9_gk6dx")
 
@@ -161,3 +171,5 @@ script = ExtResource("10_jhyir")
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="." method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="PlayerStatsManager" method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/HungryTimer" to="PlayerStatsManager" method="_on_hungry_timer_timeout"]
+
+[editable path="Player_UI"]

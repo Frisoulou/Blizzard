@@ -35,17 +35,11 @@ sources/1 = SubResource("TileSetAtlasSource_kry3j")
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 speed = 100.0
 
-[node name="RemoteCamera" parent="Player" index="1"]
+[node name="RemoteCamera" parent="Player" index="2"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="HP bar" type="Label" parent="Player"]
-modulate = Color(1, 0, 0, 1)
-z_index = 1000
-offset_left = 170.0
-offset_top = -118.0
-offset_right = 210.0
-offset_bottom = -95.0
-text = "3/3"
+[node name="HP" parent="Player" index="6" node_paths=PackedStringArray("animated_sprite_2d")]
+animated_sprite_2d = NodePath("../../Wolf/AnimatedSprite2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7, -4)
@@ -129,4 +123,6 @@ position = Vector2(22, -26)
 position = Vector2(18, -23)
 
 [editable path="Player"]
+[editable path="Player/Player_UI"]
 [editable path="House"]
+[editable path="Wolf"]
