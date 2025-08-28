@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfa141ybeg5bx"]
+[gd_scene load_steps=10 format=3 uid="uid://bfa141ybeg5bx"]
 
 [ext_resource type="PackedScene" uid="uid://dxphaxq7vcop2" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://ct1vmb1tajhqq" path="res://Scenes/wood_counter.gd" id="2_21xkr"]
 [ext_resource type="Texture2D" uid="uid://c5gw8nryktgw6" path="res://Assets/Sprites/tilemap_AE.png" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cddmmvuqlsq7f" path="res://Scenes/house.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://qm6p5ghqip04" path="res://Scenes/Ennemies/Wolf/Wolf.tscn" id="4_jjvhh"]
@@ -36,19 +35,8 @@ sources/1 = SubResource("TileSetAtlasSource_kry3j")
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 speed = 100.0
 
-[node name="RemoteCamera" parent="Player" index="2"]
+[node name="RemoteCamera" parent="Player" index="1"]
 remote_path = NodePath("../../Camera2D")
-
-[node name="Attacking" parent="Player/StateMachine" index="3" node_paths=PackedStringArray("tilemap")]
-tilemap = NodePath("../../../TileMap")
-
-[node name="Wood" parent="Player" index="6"]
-z_index = 1000
-
-[node name="WoodCounter" parent="Player" index="7"]
-modulate = Color(0, 0, 0, 1)
-z_index = 1000
-script = ExtResource("2_21xkr")
 
 [node name="HP bar" type="Label" parent="Player"]
 modulate = Color(1, 0, 0, 1)
@@ -60,6 +48,7 @@ offset_bottom = -95.0
 text = "3/3"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(7, -4)
 zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
