@@ -150,6 +150,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hqp0q")
 
 [node name="Label" type="Label" parent="tree/TreeZone/Panel"]
 visible = false
+layout_mode = 0
 offset_left = -18.6667
 offset_top = -0.333333
 offset_right = 109.333

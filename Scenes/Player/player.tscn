@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://cr8epfmtmlqy" path="res://Scripts/player/player_stats_manager.gd" id="9_gk6dx"]
 [ext_resource type="PackedScene" uid="uid://4w3yih1y14ko" path="res://Scenes/Player/player_stats_manager_debug_panel.tscn" id="10_74mp2"]
 [ext_resource type="Script" uid="uid://bgjvo143ly1n4" path="res://Scripts/player/UI/hp.gd" id="10_jhyir"]
-[ext_resource type="Script" uid="uid://ddaht5uttsrri" path="res://Scenes/game_over_screen.gd" id="11_74mp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
 size = Vector2(12.5, 14.75)
@@ -198,67 +197,14 @@ text = "Debug"
 [node name="HP" type="Node" parent="." groups=["Player"]]
 script = ExtResource("10_jhyir")
 
-[node name="Game_over_screen" type="CanvasLayer" parent="."]
-process_mode = 3
-layer = 127
-script = ExtResource("11_74mp2")
-
-[node name="Label" type="Label" parent="Game_over_screen"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -34.0
-offset_top = 219.0
-offset_right = 34.0
-offset_bottom = 242.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 50
-text = "You died"
-
-[node name="Panel" type="Panel" parent="Game_over_screen"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -401.0
-offset_top = -234.5
-offset_right = 401.0
-offset_bottom = 234.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Button" type="Button" parent="Game_over_screen"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -79.5
-offset_top = -3.0
-offset_right = 79.5
-offset_bottom = 99.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "Retry"
-
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="." method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="PlayerStatsManager" method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/HungryTimer" to="PlayerStatsManager" method="_on_hungry_timer_timeout"]
-<<<<<<< HEAD
-[connection signal="pressed" from="Game_over_screen/Button" to="Game_over_screen" method="_on_button_pressed"]
-=======
 [connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
 [connection signal="pressed" from="Player_UI/DegugButton" to="PlayerStatsManager" method="_on_degug_button_pressed"]
->>>>>>> f4bced5c5056524bcb0c2dfd482fc283a56ba60e
 
 [editable path="Player_UI"]
 [editable path="Player_UI/LevelingUpPanel/DamageUp"]
