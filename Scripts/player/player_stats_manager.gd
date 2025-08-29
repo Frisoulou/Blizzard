@@ -4,7 +4,6 @@ extends Node
 @export var debug_mode = false
 @onready var stats_debug_panel: Control = $"../Player_UI/StatsDebugPanel"
 
-
 @export var speed = 300.0
 @export var damage_point : float = 1
 
@@ -77,3 +76,9 @@ func use_wood():
 #######################
 ###Debug mode       ###
 #######################
+
+func _on_degug_button_pressed() -> void:
+	if stats_debug_panel.visible:
+		stats_debug_panel.visible = false
+	else:
+		stats_debug_panel.visible = true

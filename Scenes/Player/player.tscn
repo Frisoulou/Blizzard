@@ -159,6 +159,7 @@ one_shot = true
 script = null
 
 [node name="LevelingUpPanel" parent="Player_UI" index="1" node_paths=PackedStringArray("player", "stats_debug_panel")]
+visible = false
 z_index = 1
 player = NodePath("../..")
 stats_debug_panel = NodePath("../StatsDebugPanel")
@@ -186,6 +187,13 @@ offset_bottom = 69.0
 theme_override_font_sizes/font_size = 40
 text = "3/3"
 
+[node name="DegugButton" type="Button" parent="Player_UI"]
+offset_left = 1216.0
+offset_top = 682.0
+offset_right = 1274.0
+offset_bottom = 713.0
+text = "Debug"
+
 [node name="HP" type="Node" parent="." groups=["Player"]]
 script = ExtResource("10_jhyir")
 
@@ -197,7 +205,7 @@ script = ExtResource("10_jhyir")
 [connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
 [connection signal="pressed" from="Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
-[connection signal="pressed" from="Player_UI/LevelingUpPanel/SpeedUp/ChoosedSpeed" to="Player_UI/LevelingUpPanel" method="_on_choosed_speed_pressed"]
+[connection signal="pressed" from="Player_UI/DegugButton" to="PlayerStatsManager" method="_on_degug_button_pressed"]
 
 [editable path="Player_UI"]
 [editable path="Player_UI/LevelingUpPanel/DamageUp"]

@@ -13,6 +13,7 @@ func Debug():
 	pass
 
 func Enter():
+	print("Wolf state : running")
 	player = get_tree().get_first_node_in_group("Player")
 	animated_sprite_2d.play("Running")
 	

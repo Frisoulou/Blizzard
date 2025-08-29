@@ -32,6 +32,9 @@ sources/1 = SubResource("TileSetAtlasSource_kry3j")
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 
+[node name="PlayerStatsManager" parent="Player" index="0"]
+debug_mode = false
+
 [node name="RemoteCamera" parent="Player" index="3"]
 remote_path = NodePath("../../Camera2D")
 
@@ -60,6 +63,9 @@ layer_2/tile_data = PackedInt32Array(-65544, 851968, 4, -8, 851968, 5, -262132, 
 [node name="Wolf" parent="." instance=ExtResource("4_jjvhh")]
 position = Vector2(-79, -57)
 scale = Vector2(0.7, 0.7)
+
+[node name="Attacking" parent="Wolf/StateMachine" index="3" node_paths=PackedStringArray("player_stats_manager")]
+player_stats_manager = NodePath("../../../Player/PlayerStatsManager")
 
 [node name="Trees" type="Node" parent="."]
 
@@ -119,7 +125,6 @@ position = Vector2(98, -84)
 scale = Vector2(1.5, 1.5)
 
 [connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
-[connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/SpeedUp/ChoosedSpeed" to="Player/Player_UI/LevelingUpPanel" method="_on_choosed_speed_pressed"]
 
 [editable path="Player"]
 [editable path="Player/Player_UI"]

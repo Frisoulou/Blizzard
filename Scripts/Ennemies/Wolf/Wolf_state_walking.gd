@@ -20,6 +20,7 @@ func Debug():
 	pass
 
 func Enter():
+	print("Wolf state : walking")
 	animated_sprite_2d.play("Walking")
 	player = get_tree().get_first_node_in_group("Player")
 	random_direction()

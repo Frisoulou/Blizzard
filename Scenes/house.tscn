@@ -67,6 +67,7 @@ animations = [{
 }]
 
 [node name="House" type="StaticBody2D"]
+collision_layer = 3
 
 [node name="HouseDown" type="Sprite2D" parent="."]
 texture = ExtResource("4_l3jqw")

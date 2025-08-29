@@ -141,7 +141,6 @@ theme_override_font_sizes/font_size = 30
 text = "Level : 0"
 
 [node name="LevelingUpPanel" type="Panel" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -184,6 +183,16 @@ offset_left = 259.0
 offset_top = 129.0
 offset_right = -342.0
 offset_bottom = -65.0
+
+[node name="AnimatedSprite2D" parent="LevelingUpPanel/SpeedUp" index="0"]
+position = Vector2(95, 102.012)
+scale = Vector2(0.28882, 0.286586)
+
+[node name="ChoosedSpeed" parent="LevelingUpPanel/SpeedUp" index="1"]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 188.0
+offset_bottom = 198.0
 
 [node name="DamageOption" type="Label" parent="LevelingUpPanel"]
 layout_mode = 1
