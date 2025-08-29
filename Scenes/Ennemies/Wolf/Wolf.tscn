@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://qm6p5ghqip04"]
+[gd_scene load_steps=24 format=3 uid="uid://qm6p5ghqip04"]
 
 [ext_resource type="Script" uid="uid://e3f053rqo3df" path="res://Scripts/Ennemies/Wolf/wolf.gd" id="1_44bgs"]
 [ext_resource type="Texture2D" uid="uid://dx5m2vaa2155m" path="res://Assets/Sprites/Wolfs_animation.png" id="1_tg7vb"]
@@ -123,10 +123,15 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gg305"]
-size = Vector2(52, 27)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6eofc"]
+radius = 24.0
+height = 74.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27aur"]
+size = Vector2(45, 25)
 
 [node name="Wolf" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_44bgs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -153,14 +158,19 @@ wolf = NodePath("../..")
 script = ExtResource("6_6eofc")
 wolf = NodePath("../..")
 
-[node name="Timer" type="Timer" parent="StateMachine/Attacking"]
+[node name="AttackLengthTimer" type="Timer" parent="StateMachine/Attacking"]
 wait_time = 0.5
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, 0.5)
-shape = SubResource("RectangleShape2D_gg305")
+[node name="AttackRange" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6eofc")
 
-[connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
+[node name="WolfCollision" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_27aur")
+
+[connection signal="timeout" from="StateMachine/Attacking/AttackLengthTimer" to="StateMachine/Attacking" method="_on_attack_length_timer_timeout"]

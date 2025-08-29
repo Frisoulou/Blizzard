@@ -15,7 +15,8 @@ func random_direction():
 	wolf_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	random_time = randf_range(1, 3)
 
-func Exit():
+func Debug():
+	print("Wolf state : walking")
 	pass
 
 func Enter():

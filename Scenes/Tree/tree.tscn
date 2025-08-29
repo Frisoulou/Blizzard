@@ -1,18 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://blyyabfmt7580"]
+[gd_scene load_steps=6 format=3 uid="uid://blyyabfmt7580"]
 
 [ext_resource type="Texture2D" uid="uid://bh33evfv0namm" path="res://Assets/Sprites/tree_AE.png" id="1_oyxvi"]
+[ext_resource type="Script" uid="uid://dqaufp5jlefm1" path="res://Scripts/Others/Tree/tree.gd" id="1_rx2sp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rx2sp"]
+bg_color = Color(0.00418771, 0.200126, 0.0952968, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb44w"]
+bg_color = Color(2.59906e-06, 0.708498, 0.496097, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rx2sp"]
-size = Vector2(33, 41)
+size = Vector2(50, 48)
 
 [node name="tree" type="StaticBody2D" groups=["Tree"]]
+collision_layer = 3
+script = ExtResource("1_rx2sp")
+
+[node name="TreeSpriteTop" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -58)
+scale = Vector2(2, 2.108)
+texture = ExtResource("1_oyxvi")
+region_enabled = true
+region_rect = Rect2(0, 16.2449, 32, 26.796)
+
+[node name="TreeSpriteBottom" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(2, 2.108)
+texture = ExtResource("1_oyxvi")
+region_enabled = true
+region_rect = Rect2(0, 43.2159, 32, 20.7841)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+z_index = 3
+offset_left = 9.0
+offset_top = -48.0
+offset_right = 30.0
+offset_bottom = -43.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rx2sp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pb44w")
+max_value = 50.0
+value = 50.0
+show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 3
-position = Vector2(0, -9)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_rx2sp")
-
-[node name="TreeAe" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-scale = Vector2(1.40625, 1.40625)
-texture = ExtResource("1_oyxvi")

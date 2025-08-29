@@ -1,0 +1,408 @@
+[gd_scene load_steps=11 format=3 uid="uid://4w3yih1y14ko"]
+
+[ext_resource type="Script" uid="uid://45o5y0hbaosk" path="res://Scripts/player/player_stats_manager_debug/coldness_speed.gd" id="1_1dide"]
+[ext_resource type="Script" uid="uid://b3fd6mn2rsyah" path="res://Scripts/player/player_stats_manager_debug/player_stats_manager_debug_panel.gd" id="1_2qek5"]
+[ext_resource type="Script" uid="uid://ubwmdijm43m" path="res://Scripts/player/player_stats_manager_debug/experience.gd" id="3_3ilw4"]
+[ext_resource type="Script" uid="uid://dac42traer0hv" path="res://Scripts/player/player_stats_manager_debug/level.gd" id="4_omu2r"]
+[ext_resource type="Script" uid="uid://b14mtbl6rvm48" path="res://Scripts/player/player_stats_manager_debug/wood.gd" id="5_63ky3"]
+[ext_resource type="Script" uid="uid://bkehwhmm6u2n4" path="res://Scripts/player/player_stats_manager_debug/coldness.gd" id="6_5x3i1"]
+[ext_resource type="Script" uid="uid://dyicyipvbim6d" path="res://Scripts/player/player_stats_manager_debug/damage.gd" id="6_63ky3"]
+[ext_resource type="Script" uid="uid://cklk1qbg1lghr" path="res://Scripts/player/player_stats_manager_debug/hungriness_speed.gd" id="6_atkbn"]
+[ext_resource type="Script" uid="uid://5db4csno5nip" path="res://Scripts/player/player_stats_manager_debug/hungriness.gd" id="6_b2dlq"]
+[ext_resource type="Script" uid="uid://cgg6icjkltp0x" path="res://Scripts/player/player_stats_manager_debug/speed.gd" id="7_ixh1k"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qek5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -284.0
+offset_right = -6.0
+offset_bottom = 285.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Cold_speed" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 142.5
+offset_right = 141.0
+offset_bottom = 165.5
+text = "Coldness speed"
+script = ExtResource("1_1dide")
+
+[node name="Button" type="Button" parent="Panel/Cold_speed"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Cold_speed/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Cold_speed"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Cold_speed/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[node name="Experience" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 266.5
+offset_right = 140.0
+offset_bottom = 289.5
+text = "Experience"
+script = ExtResource("3_3ilw4")
+
+[node name="Button" type="Button" parent="Panel/Experience"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Experience/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Experience"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Experience/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[node name="Level" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 307.5
+offset_right = 140.0
+offset_bottom = 330.5
+text = "Level"
+script = ExtResource("4_omu2r")
+
+[node name="Button" type="Button" parent="Panel/Level"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Level/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Level"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Level/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[node name="Wood" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 348.5
+offset_right = 140.0
+offset_bottom = 371.5
+text = "Wood"
+script = ExtResource("5_63ky3")
+
+[node name="Button" type="Button" parent="Panel/Wood"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Wood/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Wood"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Wood/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[node name="Hungriness_speed" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 224.5
+offset_right = 158.0
+offset_bottom = 247.5
+text = "Hungriness speed"
+script = ExtResource("6_atkbn")
+
+[node name="Button" type="Button" parent="Panel/Hungriness_speed"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Hungriness_speed/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Hungriness_speed"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Hungriness_speed/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[node name="Hungriness" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 182.5
+offset_right = 141.0
+offset_bottom = 205.5
+text = "Hungriness"
+script = ExtResource("6_b2dlq")
+
+[node name="Button" type="Button" parent="Panel/Hungriness"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Hungriness/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Hungriness"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Hungriness/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[node name="Coldness" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.063
+anchor_bottom = 0.02
+offset_left = 20.0
+offset_top = 101.5
+offset_right = 45.069
+offset_bottom = 113.12
+text = "Coldness"
+script = ExtResource("6_5x3i1")
+
+[node name="Button" type="Button" parent="Panel/Coldness"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Coldness/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Coldness"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Coldness/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[node name="Damage" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 56.5
+offset_right = 84.0
+offset_bottom = 79.5
+text = "Damage"
+script = ExtResource("6_63ky3")
+
+[node name="Button" type="Button" parent="Panel/Damage"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Damage/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Damage"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Damage/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[node name="Speed" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 15.5
+offset_right = 114.0
+offset_bottom = 38.5
+text = "Speed"
+script = ExtResource("7_ixh1k")
+
+[node name="Button" type="Button" parent="Panel/Speed"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -10.0
+offset_right = 203.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="Panel/Speed/Button"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 20.0
+text = "+"
+
+[node name="Button2" type="Button" parent="Panel/Speed"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 9.0
+offset_right = 203.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="Panel/Speed/Button2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 52.0
+offset_bottom = 19.0
+text = "-"
+
+[connection signal="pressed" from="Panel/Cold_speed/Button" to="Panel/Cold_speed" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Cold_speed/Button2" to="Panel/Cold_speed" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Experience/Button" to="Panel/Experience" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Experience/Button2" to="Panel/Experience" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Level/Button" to="Panel/Level" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Level/Button2" to="Panel/Level" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Wood/Button" to="Panel/Wood" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Wood/Button2" to="Panel/Wood" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Hungriness_speed/Button" to="Panel/Hungriness_speed" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Hungriness_speed/Button2" to="Panel/Hungriness_speed" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Hungriness/Button" to="Panel/Hungriness" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Hungriness/Button2" to="Panel/Hungriness" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Coldness/Button" to="Panel/Coldness" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Coldness/Button2" to="Panel/Coldness" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Damage/Button" to="Panel/Damage" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Damage/Button2" to="Panel/Damage" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Speed/Button" to="Panel/Speed" method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Speed/Button2" to="Panel/Speed" method="_on_button_2_pressed"]
