@@ -45,8 +45,18 @@ bg_color = Color(0.228511, 0.228511, 0.228511, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_vhiet")]
 
+[node name="PlayerStatsManager" parent="Player" index="0"]
+debug_mode = false
+
 [node name="RemoteCamera" parent="Player" index="3"]
 remote_path = NodePath("../Camera2D")
+
+[node name="Label" parent="Player/Player_UI/LevelingUpPanel" index="0"]
+offset_top = 0.0
+offset_bottom = 102.0
+text = "Congratulation, you leveled up !
+Leveling up let you increase your stats
+Choose one of the following."
 
 [node name="StatsDebugPanel" parent="Player/Player_UI" index="2"]
 visible = false
@@ -160,6 +170,9 @@ theme_override_font_sizes/font_size = 12
 text = "Left click to
 cut trees"
 horizontal_alignment = 1
+
+[node name="tree2" parent="." instance=ExtResource("2_gskf5")]
+position = Vector2(272, 140)
 
 [connection signal="body_entered" from="tree/TreeZone" to="tree/TreeZone" method="_on_body_entered"]
 [connection signal="body_exited" from="tree/TreeZone" to="tree/TreeZone" method="_on_body_exited"]

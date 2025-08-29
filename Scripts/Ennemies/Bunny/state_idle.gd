@@ -1,26 +1,25 @@
 extends State
 
-@export var wolf : CharacterBody2D
-@export var wolf_speed : int = 30
-@export var aggro_length : int = 150
+@export var rabbit: CharacterBody2D
+@export var speed : int = 30
+@export var flee_range : int = 20
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
-@onready var running: Node = $"../Running"
-
 var player = CharacterBody2D
-var wolf_direction: Vector2
+var direction: Vector2
 var random_time: float
 
 func random_direction():
-	wolf_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	random_time = randf_range(1, 3)
 
 func Debug():
-	print("Wolf state : walking")
+	print("Rabbit state : idle")
 	pass
 
 func Enter():
-	animated_sprite_2d.play("Walking")
+	print("Rabbit state : idle")
+	animated_sprite_2d.play("Idle")
 	player = get_tree().get_first_node_in_group("Player")
 	random_direction()
 
@@ -29,17 +28,16 @@ func Update(delta: float):
 		random_time -= delta
 	else :
 		random_direction()
-		
-	var player_wolf_distance = player.global_position - wolf.global_position
-	if player_wolf_distance.length() < aggro_length:
+	
+	var player_rabbit_distance = player.global_position - rabbit.global_position
+	if player_rabbit_distance.length() < flee_range:
 		Transitioned.emit(self, "Running")
 	
 func Physics_update(delta: float):
-	if wolf:
-		wolf.velocity = wolf_direction * wolf_speed
+	if rabbit:
+		rabbit.velocity = direction * speed
 	
-	if wolf_direction.x > 0:
+	if direction.x > 0:
 		animated_sprite_2d.flip_h = false
-	if wolf_direction.x < 0:
+	if direction.x < 0:
 		animated_sprite_2d.flip_h = true
-	

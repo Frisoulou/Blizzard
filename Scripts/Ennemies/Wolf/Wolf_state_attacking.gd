@@ -14,11 +14,10 @@ func Debug():
 	pass
 
 func Enter():
-	print("Wolf state : attacking")
 	animated_sprite_2d.play("Attacking")
 	attack_length_timer.start(attack_length)
 	
-func _physics_process(delta: float) -> void:
+func Physics_update(delta: float) -> void:
 	pass
 
 func _on_attack_length_timer_timeout() -> void:
