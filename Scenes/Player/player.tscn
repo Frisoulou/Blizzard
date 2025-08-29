@@ -159,7 +159,6 @@ one_shot = true
 script = null
 
 [node name="LevelingUpPanel" parent="Player_UI" index="1" node_paths=PackedStringArray("player", "stats_debug_panel")]
-visible = false
 z_index = 1
 player = NodePath("../..")
 stats_debug_panel = NodePath("../StatsDebugPanel")

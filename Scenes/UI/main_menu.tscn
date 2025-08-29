@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3jh1snvp8d0y"]
+
+[ext_resource type="Script" uid="uid://bwt2o6vctnnek" path="res://Scripts/UI/main_menu.gd" id="1_28flt"]
+
+[sub_resource type="Gradient" id="Gradient_erv1k"]
+offsets = PackedFloat32Array(0.232143, 0.72619)
+colors = PackedColorArray(1, 1, 1, 1, 0.560784, 0.560784, 0.560784, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_28flt"]
+gradient = SubResource("Gradient_erv1k")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_28flt")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 898.0
+offset_top = 307.0
+offset_right = -143.0
+offset_bottom = -330.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Blizzard"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.478
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -313.84
+offset_top = -85.0
+offset_right = -229.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Start-Button" type="Button" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "Play"
+flat = true
+
+[node name="Quit_Button" type="Button" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+flat = true
+
+[connection signal="button_down" from="VBoxContainer/Start-Button" to="." method="_on_start_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/Quit_Button" to="." method="_on_quit_button_button_down"]

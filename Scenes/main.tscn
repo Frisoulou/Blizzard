@@ -124,8 +124,6 @@ scale = Vector2(0.75, 0.75)
 position = Vector2(98, -84)
 scale = Vector2(1.5, 1.5)
 
-[connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
-
 [editable path="Player"]
 [editable path="Player/Player_UI"]
 [editable path="Player/Player_UI/LevelingUpPanel/DamageUp"]
