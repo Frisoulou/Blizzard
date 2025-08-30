@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=29 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dh8gaxqpc7alu" path="res://Assets/Sounds/step_in_snow.mp3" id="10_dey5f"]
 [ext_resource type="Script" uid="uid://bgjvo143ly1n4" path="res://Scripts/player/UI/hp.gd" id="10_jhyir"]
 [ext_resource type="Script" uid="uid://ddaht5uttsrri" path="res://Scenes/game_over_screen.gd" id="11_74mp2"]
+[ext_resource type="AudioStream" uid="uid://ci2u5gca0k3ei" path="res://Assets/Sounds/upgrade.mp3" id="13_r5xpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
 size = Vector2(12.5, 14.75)
@@ -177,6 +178,12 @@ one_shot = true
 [node name="Player_UI" parent="." instance=ExtResource("8_jlvik")]
 script = null
 
+[node name="WoodDisplay" parent="Player_UI/Panel" index="1"]
+offset_left = -20.077
+offset_top = -34.416
+offset_right = 19.923
+offset_bottom = 34.584
+
 [node name="Health" parent="Player_UI/Panel" index="5"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_7g0yx")
 
@@ -195,6 +202,10 @@ offset_bottom = -52.0
 [node name="AnimatedSprite2D" parent="Player_UI/LevelingUpPanel/SpeedUp" index="0"]
 position = Vector2(93, 98.1534)
 scale = Vector2(0.291925, 0.289025)
+
+[node name="stat" type="AudioStreamPlayer2D" parent="Player_UI/LevelingUpPanel" index="5"]
+stream = ExtResource("13_r5xpd")
+volume_db = 8.0
 
 [node name="StatsDebugPanel" parent="Player_UI" node_paths=PackedStringArray("player") instance=ExtResource("10_74mp2")]
 player = NodePath("../..")
@@ -265,6 +276,7 @@ text = "Retry"
 [connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
+[connection signal="pressed" from="Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
 [connection signal="pressed" from="Player_UI/DegugButton" to="PlayerStatsManager" method="_on_degug_button_pressed"]
 [connection signal="pressed" from="Game_over_screen/Button" to="Game_over_screen" method="_on_button_pressed"]
 

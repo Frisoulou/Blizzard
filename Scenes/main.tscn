@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfa141ybeg5bx"]
+[gd_scene load_steps=10 format=3 uid="uid://bfa141ybeg5bx"]
 
 [ext_resource type="PackedScene" uid="uid://dxphaxq7vcop2" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://dyqvco1bk6fec" path="res://Assets/Sprites/tilemap_2.png" id="2_6bp64"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qm6p5ghqip04" path="res://Scenes/Ennemies/Wolf/Wolf.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://blyyabfmt7580" path="res://Scenes/Tree/tree.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://1mpxiaollen8" path="res://Scenes/Ennemies/Bunny/Bunny.tscn" id="6_21xkr"]
+[ext_resource type="AudioStream" uid="uid://douhdtve1o4j4" path="res://Assets/Sounds/Snowdin Town.mp3" id="7_6bp64"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ynf5e"]
 texture = ExtResource("2_6bp64")
@@ -267,6 +268,11 @@ max_distance = 150.0
 
 [node name="Rabbit" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(-109, -33)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6bp64")
+volume_db = 6.169
+autoplay = true
 
 [connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
 
