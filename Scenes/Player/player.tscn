@@ -254,6 +254,7 @@ text = "Retry"
 [connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
+[connection signal="pressed" from="Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
 [connection signal="pressed" from="Player_UI/DegugButton" to="PlayerStatsManager" method="_on_degug_button_pressed"]
 [connection signal="pressed" from="Game_over_screen/Button" to="Game_over_screen" method="_on_button_pressed"]
 
