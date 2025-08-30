@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cddmmvuqlsq7f"]
+[gd_scene load_steps=17 format=3 uid="uid://cddmmvuqlsq7f"]
 
 [ext_resource type="Texture2D" uid="uid://cobeikjqgqr" path="res://Assets/Sprites/house_up2.png" id="1_okrnj"]
 [ext_resource type="Script" uid="uid://c11jjg5heevd3" path="res://Scripts/Others/House/House.gd" id="4_iqtyj"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dyo45oepynt05" path="res://Assets/Sounds/fire.mp3" id="5_bu6dc"]
 [ext_resource type="Texture2D" uid="uid://c5iqhk3bid28f" path="res://Assets/Sprites/house_middle.png" id="5_gau5j"]
 [ext_resource type="Texture2D" uid="uid://cvtdqptr3fmj8" path="res://Assets/Sprites/CampFire-ezgif.com-gif-to-sprite-converter.png" id="5_xi0mm"]
+[ext_resource type="PackedScene" uid="uid://bu8jk32irjr57" path="res://Scenes/Tree/wood.tscn" id="6_l3jqw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xi0mm"]
 radius = 58.0086
@@ -109,9 +110,13 @@ autoplay = true
 max_distance = 120.0
 parameters/looping = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(13, 72)
-scale = Vector2(0.0625, 0.0625)
+[node name="Wood" parent="." instance=ExtResource("6_l3jqw")]
+position = Vector2(12, 84)
+scale = Vector2(0.1, 0.1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wood"]
+position = Vector2(20, -210)
+scale = Vector2(1.36719, 1.36719)
 sprite_frames = SubResource("SpriteFrames_0h1dt")
 autoplay = "default"
 frame_progress = 0.462056

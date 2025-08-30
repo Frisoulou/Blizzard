@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqwmg6gsjheoo"]
+[gd_scene load_steps=11 format=3 uid="uid://cqwmg6gsjheoo"]
 
 [ext_resource type="Script" uid="uid://bgemd5ab4hfry" path="res://Scripts/game_over_script.gd" id="1_1oy0g"]
-[ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="1_uwpe7"]
 [ext_resource type="Script" uid="uid://db46dol2iupk7" path="res://Scripts/player/UI/leveling_up_panel.gd" id="3_1oy0g"]
 [ext_resource type="Texture2D" uid="uid://byqwhbu846eug" path="res://Assets/Sprites/heart.png" id="3_1wfci"]
 [ext_resource type="PackedScene" uid="uid://cqen7gt8u0m5f" path="res://Scenes/Player/Leveling_up/DamageUp.tscn" id="3_21470"]
 [ext_resource type="PackedScene" uid="uid://c0cgqkdxiidl2" path="res://Scenes/Player/Leveling_up/SpeedUp.tscn" id="4_1oy0g"]
+[ext_resource type="PackedScene" uid="uid://bu8jk32irjr57" path="res://Scenes/Tree/wood.tscn" id="6_1wfci"]
 
 [sub_resource type="Theme" id="Theme_sjr6g"]
 
@@ -14,6 +14,9 @@ bg_color = Color(0, 0.290167, 0.144619, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjr6g"]
 bg_color = Color(0, 0.290196, 0.145098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cs7ld"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Player_UI" type="CanvasLayer"]
 script = ExtResource("1_1oy0g")
@@ -57,15 +60,6 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Cold"
 
-[node name="TextureRect" type="TextureRect" parent="Panel"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 86.0
-offset_bottom = 85.0
-texture = ExtResource("1_uwpe7")
-expand_mode = 1
-
 [node name="WoodDisplay" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
@@ -73,13 +67,28 @@ anchor_left = 0.593
 anchor_top = 0.167
 anchor_right = 0.593
 anchor_bottom = 0.167
-offset_left = -20.077
-offset_top = -34.416
-offset_right = 19.923
-offset_bottom = 34.584
+offset_left = 0.923004
+offset_top = -34.941
+offset_right = 40.923
+offset_bottom = 34.059
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "0"
+
+[node name="X" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.593
+anchor_top = 0.167
+anchor_right = 0.593
+anchor_bottom = 0.167
+offset_left = -39.077
+offset_top = -14.941
+offset_right = 0.923004
+offset_bottom = 54.059
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "x"
 
 [node name="Hungriness" type="ProgressBar" parent="Panel"]
 layout_mode = 1
@@ -145,6 +154,7 @@ text = "Level : 0"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cs7ld")
 
 [node name="Heart1" type="TextureRect" parent="Panel/Health"]
 layout_mode = 0
@@ -249,6 +259,10 @@ offset_bottom = 380.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "Speed +20%"
+
+[node name="Wood" parent="." instance=ExtResource("6_1wfci")]
+position = Vector2(46, 58)
+scale = Vector2(0.3, 0.3)
 
 [connection signal="pressed" from="LevelingUpPanel/DamageUp/ChoosedDamage" to="LevelingUpPanel" method="_on_choosed_damage_pressed"]
 [connection signal="pressed" from="LevelingUpPanel/SpeedUp/ChoosedSpeed" to="LevelingUpPanel" method="_on_choosed_speed_pressed"]
