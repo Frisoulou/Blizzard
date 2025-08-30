@@ -101,7 +101,7 @@ script = ExtResource("1_a3d8c")
 script = ExtResource("9_gk6dx")
 debug_mode = true
 speed = 100.0
-damage_point = 30.0
+damage_point = 10.0
 cold_speed = 0.75
 
 [node name="ColdTimer" type="Timer" parent="PlayerStatsManager"]

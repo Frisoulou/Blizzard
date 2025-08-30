@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://biblu3qtdl3pc"]
+[gd_scene load_steps=16 format=3 uid="uid://biblu3qtdl3pc"]
 
 [ext_resource type="PackedScene" uid="uid://dxphaxq7vcop2" path="res://Scenes/Player/player.tscn" id="1_vhiet"]
 [ext_resource type="Texture2D" uid="uid://c5gw8nryktgw6" path="res://Assets/Sprites/tilemap_AE.png" id="2_21uyk"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://dn0exyjsg3wxk" path="res://Scripts/Tutorial/tutorial_instructions.gd" id="2_jls7v"]
 [ext_resource type="PackedScene" uid="uid://cddmmvuqlsq7f" path="res://Scenes/house.tscn" id="4_jls7v"]
 [ext_resource type="Script" uid="uid://ctjoevvvpde1n" path="res://Scripts/Tutorial/tutorial_tree.gd" id="6_4ocgo"]
+[ext_resource type="PackedScene" uid="uid://1mpxiaollen8" path="res://Scenes/Ennemies/Bunny/Bunny.tscn" id="7_4ocgo"]
+[ext_resource type="PackedScene" uid="uid://qm6p5ghqip04" path="res://Scenes/Ennemies/Wolf/Wolf.tscn" id="8_1eaxn"]
+[ext_resource type="Script" uid="uid://ca8inf2pjpuh2" path="res://Scripts/Ennemies/Wolf/tutorial_state_not_moving.gd" id="9_4n3ja"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jls7v"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -47,6 +50,7 @@ bg_color = Color(0.228511, 0.228511, 0.228511, 1)
 
 [node name="PlayerStatsManager" parent="Player" index="0"]
 debug_mode = false
+damage_point = 30.0
 
 [node name="RemoteCamera" parent="Player" index="3"]
 remote_path = NodePath("../Camera2D")
@@ -78,8 +82,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -420.5
-offset_right = 420.5
+offset_left = -420.0
+offset_right = 318.0
 offset_bottom = 159.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jls7v")
@@ -88,7 +92,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jls7v")
 layout_mode = 0
 offset_left = 13.0
 offset_top = 11.0
-offset_right = 815.0
+offset_right = 756.0
 offset_bottom = 147.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
@@ -172,8 +176,26 @@ cut trees"
 horizontal_alignment = 1
 
 [node name="tree2" parent="." instance=ExtResource("2_gskf5")]
-position = Vector2(272, 140)
+position = Vector2(316, 173)
 
+[node name="TutorialRabbit" parent="." instance=ExtResource("7_4ocgo")]
+position = Vector2(285, -34)
+
+[node name="TutorialWolf" parent="." instance=ExtResource("8_1eaxn")]
+visible = false
+position = Vector2(-3, -76)
+
+[node name="StateMachine" parent="TutorialWolf" index="1" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("NotMoving")
+
+[node name="NotMoving" type="Node" parent="TutorialWolf/StateMachine" index="5"]
+script = ExtResource("9_4n3ja")
+
+[node name="WolfCollision" parent="TutorialWolf" index="3"]
+disabled = true
+
+[connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/TutorialInstructions" method="_on_choosed_damage_pressed"]
+[connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/SpeedUp/ChoosedSpeed" to="Player/Player_UI/TutorialInstructions" method="_on_choosed_speed_pressed"]
 [connection signal="body_entered" from="tree/TreeZone" to="tree/TreeZone" method="_on_body_entered"]
 [connection signal="body_exited" from="tree/TreeZone" to="tree/TreeZone" method="_on_body_exited"]
 
@@ -182,3 +204,5 @@ position = Vector2(272, 140)
 [editable path="Player/Player_UI/LevelingUpPanel/DamageUp"]
 [editable path="Player/Player_UI/LevelingUpPanel/SpeedUp"]
 [editable path="House"]
+[editable path="TutorialRabbit"]
+[editable path="TutorialWolf"]

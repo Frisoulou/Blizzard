@@ -5,6 +5,7 @@ extends State
 @export var back_to_idle_range : int = 150
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
+var rabbit_started_running = false
 var player = CharacterBody2D
 
 func Debug():
@@ -12,7 +13,7 @@ func Debug():
 	pass
 
 func Enter():
-	print("Rabbit state : running")
+	rabbit_started_running = true
 	animated_sprite_2d.play("Idle")
 	player = get_tree().get_first_node_in_group("Player")
 	
