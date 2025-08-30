@@ -9,10 +9,11 @@ extends State
 @onready var wolf_collision: CollisionShape2D = $"../../WolfCollision"
 
 func Debug():
-	print("wolf state : idle")
+	print("wolf state : dead")
 	pass
 
 func Enter():
+	print("Wolf state : dead")
 	wolf.velocity = Vector2(0, 0)
 	animated_sprite_2d.visible = false
 	progress_bar.visible = false

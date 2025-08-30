@@ -1,6 +1,6 @@
 s[gd_scene load_steps=10 format=3 uid="uid://cqwmg6gsjheoo"]
 
-[ext_resource type="Script" uid="uid://bikq0c2qwn83q" path="res://Scripts/player/UI/player_ui.gd" id="1_sjr6g"]
+[ext_resource type="Script" uid="uid://bgemd5ab4hfry" path="res://Scripts/game_over_script.gd" id="1_1oy0g"]
 [ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="1_uwpe7"]
 [ext_resource type="Script" uid="uid://db46dol2iupk7" path="res://Scripts/player/UI/leveling_up_panel.gd" id="3_1oy0g"]
 [ext_resource type="Texture2D" uid="uid://b7uqv23f08k6o" path="res://Assets/Sprites/Meat.png" id="3_1wfci"]
@@ -16,7 +16,7 @@ bg_color = Color(0, 0.290167, 0.144619, 1)
 bg_color = Color(0, 0.290196, 0.145098, 1)
 
 [node name="Player_UI" type="CanvasLayer"]
-script = ExtResource("1_sjr6g")
+script = ExtResource("1_1oy0g")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 8.0

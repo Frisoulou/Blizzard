@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cobeikjqgqr" path="res://Assets/Sprites/house_up2.png" id="1_okrnj"]
 [ext_resource type="Script" uid="uid://c11jjg5heevd3" path="res://Scripts/Others/House/House.gd" id="4_iqtyj"]
 [ext_resource type="Texture2D" uid="uid://dk2r1csxkmi7q" path="res://Assets/Sprites/house_down_AE.png" id="4_l3jqw"]
+[ext_resource type="AudioStream" uid="uid://dyo45oepynt05" path="res://Assets/Sounds/fire.mp3" id="5_bu6dc"]
 [ext_resource type="Texture2D" uid="uid://c5iqhk3bid28f" path="res://Assets/Sprites/house_middle.png" id="5_gau5j"]
 [ext_resource type="Texture2D" uid="uid://cvtdqptr3fmj8" path="res://Assets/Sprites/CampFire-ezgif.com-gif-to-sprite-converter.png" id="5_xi0mm"]
 [ext_resource type="PackedScene" uid="uid://cbi1mm2rw8xyf" path="res://Scenes/Tree/wood.tscn" id="6_bu6dc"]
