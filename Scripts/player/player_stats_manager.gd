@@ -76,7 +76,6 @@ func use_wood():
 ###Managing health  ###
 #######################
 var health : int = 3
-@onready var hp_bar: Label = $"../Player_UI/HP_bar"
 @onready var game_over_screen: CanvasLayer = $"../Game_over_screen"
 @onready var hit_sound: AudioStreamPlayer2D = $Hit_sound
 @onready var heart_1: TextureRect = $"../Player_UI/Panel/Health/Heart1"
@@ -85,7 +84,6 @@ var health : int = 3
 
 func _on_damage_taken():
 	health = max(health -1, 0)
-	hp_bar.text = str(health, "/3")
 	hit_sound.play()
 	match health:
 		3:

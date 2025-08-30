@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=27 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
@@ -95,6 +95,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gk6dx"]
 radius = 13.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g0yx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_layer = 5
@@ -169,6 +172,9 @@ one_shot = true
 [node name="Player_UI" parent="." instance=ExtResource("8_jlvik")]
 script = null
 
+[node name="Health" parent="Player_UI/Panel" index="5"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_7g0yx")
+
 [node name="LevelingUpPanel" parent="Player_UI" index="1" node_paths=PackedStringArray("player", "stats_debug_panel")]
 visible = false
 z_index = 1
@@ -187,16 +193,6 @@ scale = Vector2(0.291925, 0.289025)
 
 [node name="StatsDebugPanel" parent="Player_UI" node_paths=PackedStringArray("player") instance=ExtResource("10_74mp2")]
 player = NodePath("../..")
-
-[node name="HP_bar" type="Label" parent="Player_UI"]
-modulate = Color(1, 0, 0, 1)
-z_index = 1000
-offset_left = 1181.0
-offset_top = 28.0
-offset_right = 1252.0
-offset_bottom = 69.0
-theme_override_font_sizes/font_size = 40
-text = "3/3"
 
 [node name="DegugButton" type="Button" parent="Player_UI"]
 offset_left = 1216.0
@@ -264,7 +260,6 @@ text = "Retry"
 [connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
-[connection signal="pressed" from="Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
 [connection signal="pressed" from="Player_UI/DegugButton" to="PlayerStatsManager" method="_on_degug_button_pressed"]
 [connection signal="pressed" from="Game_over_screen/Button" to="Game_over_screen" method="_on_button_pressed"]
 
