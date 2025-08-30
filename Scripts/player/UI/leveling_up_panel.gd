@@ -7,7 +7,6 @@ extends Panel
 @onready var stat: AudioStreamPlayer2D = $stat
 
 
-
 func _on_choosed_damage_pressed() -> void:
 	leveling_up_panel.visible = false
 	player_stats_manager.damage_point *= 1.15

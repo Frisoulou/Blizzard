@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=30 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dh8gaxqpc7alu" path="res://Assets/Sounds/step_in_snow.mp3" id="10_dey5f"]
 [ext_resource type="Script" uid="uid://bgjvo143ly1n4" path="res://Scripts/player/UI/hp.gd" id="10_jhyir"]
 [ext_resource type="Script" uid="uid://ddaht5uttsrri" path="res://Scenes/game_over_screen.gd" id="11_74mp2"]
+[ext_resource type="Script" uid="uid://8ieumravnc4r" path="res://Scripts/player/cinematic.gd" id="12_ks1b7"]
 [ext_resource type="AudioStream" uid="uid://ci2u5gca0k3ei" path="res://Assets/Sounds/upgrade.mp3" id="13_r5xpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
@@ -152,7 +153,7 @@ position = Vector2(7, -4)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_xpcdj")
-initial_state = NodePath("Walking")
+initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("4_htcer")
@@ -174,6 +175,9 @@ script = ExtResource("6_dd0ac")
 [node name="Timer" type="Timer" parent="StateMachine/Attacking"]
 wait_time = 0.5
 one_shot = true
+
+[node name="cinematic" type="Node" parent="StateMachine"]
+script = ExtResource("12_ks1b7")
 
 [node name="Player_UI" parent="." instance=ExtResource("8_jlvik")]
 script = null
