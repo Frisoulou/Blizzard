@@ -67,6 +67,13 @@ theme_override_font_sizes/font_size = 50
 text = "Play"
 flat = true
 
+[node name="Start-No-tuto" type="Button" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "No tutorial"
+flat = true
+
 [node name="Quit_Button" type="Button" parent="VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
@@ -74,5 +81,6 @@ theme_override_font_sizes/font_size = 50
 text = "Quit"
 flat = true
 
-[connection signal="button_down" from="VBoxContainer/Start-Button" to="." method="_on_start_button_button_down"]
-[connection signal="button_down" from="VBoxContainer/Quit_Button" to="." method="_on_quit_button_button_down"]
+[connection signal="pressed" from="VBoxContainer/Start-Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start-No-tuto" to="." method="_on_start_notuto_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]

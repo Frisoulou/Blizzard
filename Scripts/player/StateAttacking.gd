@@ -21,6 +21,8 @@ func Enter():
 	if tree_is_near and nearest_tree and nearest_tree is Node2D:
 		if nearest_tree.is_in_group("Tree"):
 			nearest_tree._on_damage_taken(player_stats_manager.damage_point, player_stats_manager)
+		if nearest_tree.is_in_group("Entities"): #I'm a bit lazy to change everything, but it work the same for entities and trees. So nearest_tree can be an entity
+			nearest_tree._on_damage_taken(player_stats_manager.damage_point, player_stats_manager)
 	if timer.is_stopped():
 		timer.start()
 
