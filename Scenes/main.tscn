@@ -130,4 +130,5 @@ scale = Vector2(1.5, 1.5)
 [editable path="Player/Player_UI"]
 [editable path="Player/Player_UI/LevelingUpPanel/DamageUp"]
 [editable path="Player/Player_UI/LevelingUpPanel/SpeedUp"]
+[editable path="Player/Game_over"]
 [editable path="Wolf"]

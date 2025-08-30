@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=24 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
@@ -251,16 +251,9 @@ text = "Retry"
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="." method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="PlayerStatsManager" method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/HungryTimer" to="PlayerStatsManager" method="_on_hungry_timer_timeout"]
-<<<<<<< HEAD
 [connection signal="pressed" from="Game_over_screen/Button" to="Game_over_screen" method="_on_button_pressed"]
-=======
-[connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
-[connection signal="pressed" from="Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
-[connection signal="pressed" from="Player_UI/DegugButton" to="PlayerStatsManager" method="_on_degug_button_pressed"]
->>>>>>> f4bced5c5056524bcb0c2dfd482fc283a56ba60e
 
 [editable path="Player_UI"]
 [editable path="Player_UI/LevelingUpPanel/DamageUp"]
 [editable path="Player_UI/LevelingUpPanel/SpeedUp"]
+[editable path="Game_over"]

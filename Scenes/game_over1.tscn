@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://yjxryarxs0fs"]
+
+[ext_resource type="Script" uid="uid://bgemd5ab4hfry" path="res://Scripts/game_over_script.gd" id="1_ecksf"]
+
+[node name="Game_over" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ecksf")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 154.0
+offset_right = 134.0
+offset_bottom = 237.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.158472, 0.158472, 0.158472, 1)
+theme_override_font_sizes/font_size = 60
+text = "You died"
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_top = 81.0
+offset_right = -152.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Retry" type="Button" parent="."]
+offset_left = 554.0
+offset_top = 329.0
+offset_right = 717.0
+offset_bottom = 420.0
+theme_override_font_sizes/font_size = 60
+text = "Retry"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

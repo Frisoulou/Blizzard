@@ -2,6 +2,7 @@ extends Node
 
 @export var animated_sprite_2d: AnimatedSprite2D
 @onready var hp_bar: Label = $"../Player_UI/HP_bar"
+@onready var game_over: CanvasLayer = $"../Game_over"
 
 
 var health: int = 3
