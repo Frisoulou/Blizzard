@@ -13,11 +13,10 @@ func Debug():
 	pass
 
 func Enter():
-	print("Wolf state : running")
 	player = get_tree().get_first_node_in_group("Player")
 	animated_sprite_2d.play("Running")
 	
-func _physics_process(delta: float) -> void:
+func Physics_update(delta: float) -> void:
 	var wolf_direction = player.global_position - wolf.global_position
 	
 	if wolf_direction.length() < aggro_length and wolf_direction.length() > attack_length:

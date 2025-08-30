@@ -102,7 +102,7 @@ script = ExtResource("1_a3d8c")
 script = ExtResource("9_gk6dx")
 debug_mode = true
 speed = 100.0
-damage_point = 10.0
+damage_point = 50.0
 cold_speed = 0.75
 
 [node name="ColdTimer" type="Timer" parent="PlayerStatsManager"]
@@ -251,9 +251,12 @@ text = "Retry"
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="." method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/ColdTimer" to="PlayerStatsManager" method="_on_cold_timer_timeout"]
 [connection signal="timeout" from="PlayerStatsManager/HungryTimer" to="PlayerStatsManager" method="_on_hungry_timer_timeout"]
+[connection signal="body_entered" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Marker2D/Area2D" to="StateMachine/Attacking" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
+[connection signal="pressed" from="Player_UI/DegugButton" to="PlayerStatsManager" method="_on_degug_button_pressed"]
 [connection signal="pressed" from="Game_over_screen/Button" to="Game_over_screen" method="_on_button_pressed"]
 
 [editable path="Player_UI"]
 [editable path="Player_UI/LevelingUpPanel/DamageUp"]
 [editable path="Player_UI/LevelingUpPanel/SpeedUp"]
-[editable path="Game_over"]

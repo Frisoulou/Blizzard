@@ -19,6 +19,7 @@ func Update(delta: float):
 	###########################################################
 	#1. Define a direction vector that will store the direction
 	var direction = Vector2.ZERO
+	player.velocity = Vector2.ZERO
 	if Input.is_action_pressed("right"):
 		direction.x += 1
 	if Input.is_action_pressed("left"):

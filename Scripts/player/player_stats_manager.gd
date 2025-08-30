@@ -72,6 +72,20 @@ func use_wood():
 		coldness.value += 10
 		_on_experience_get(1)
 
+#######################
+###Managing health  ###
+#######################
+var health : int = 3
+@onready var hp_bar: Label = $"../Player_UI/HP_bar"
+@onready var game_over_screen: CanvasLayer = $"../Game_over_screen"
+
+func _on_damage_taken():
+	health = max(health -1, 0)
+	hp_bar.text = str(health, "/3")
+
+	if health == 0:
+		game_over_screen.game_over()
+
 
 #######################
 ###Debug mode       ###
