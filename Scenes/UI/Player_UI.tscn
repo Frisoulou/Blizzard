@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqwmg6gsjheoo"]
+s[gd_scene load_steps=10 format=3 uid="uid://cqwmg6gsjheoo"]
 
 [ext_resource type="Script" uid="uid://bikq0c2qwn83q" path="res://Scripts/player/UI/player_ui.gd" id="1_sjr6g"]
 [ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="1_uwpe7"]
 [ext_resource type="Script" uid="uid://db46dol2iupk7" path="res://Scripts/player/UI/leveling_up_panel.gd" id="3_1oy0g"]
+[ext_resource type="Texture2D" uid="uid://b7uqv23f08k6o" path="res://Assets/Sprites/Meat.png" id="3_1wfci"]
 [ext_resource type="PackedScene" uid="uid://cqen7gt8u0m5f" path="res://Scenes/Player/Leveling_up/DamageUp.tscn" id="3_21470"]
 [ext_resource type="PackedScene" uid="uid://c0cgqkdxiidl2" path="res://Scenes/Player/Leveling_up/SpeedUp.tscn" id="4_1oy0g"]
 
@@ -55,30 +56,6 @@ offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Cold"
-
-[node name="TextureRect" type="TextureRect" parent="Panel"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 86.0
-offset_bottom = 85.0
-texture = ExtResource("1_uwpe7")
-expand_mode = 1
-
-[node name="WoodDisplay" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.593
-anchor_top = 0.167
-anchor_right = 0.593
-anchor_bottom = 0.167
-offset_left = -20.077
-offset_top = -34.416
-offset_right = 19.923
-offset_bottom = 34.584
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "0"
 
 [node name="Hungriness" type="ProgressBar" parent="Panel"]
 layout_mode = 1
@@ -139,6 +116,48 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Level : 0"
+
+[node name="Wood" parent="Panel" instance=ExtResource("2_1oy0g")]
+position = Vector2(52, 48)
+scale = Vector2(0.3, 0.3)
+
+[node name="WoodDisplay" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 29.0
+offset_right = 151.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="X" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 34.0
+offset_right = 117.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 25
+text = "x"
+
+[node name="HPDisplay" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="Sprite2D" parent="Panel/HPDisplay"]
+position = Vector2(39, 115)
+scale = Vector2(0.36875, 0.36875)
+texture = ExtResource("3_1wfci")
+
+[node name="Heart2" type="Sprite2D" parent="Panel/HPDisplay"]
+position = Vector2(99, 116)
+scale = Vector2(0.36875, 0.36875)
+texture = ExtResource("3_1wfci")
+
+[node name="Heart3" type="Sprite2D" parent="Panel/HPDisplay"]
+position = Vector2(160.031, 115.5)
+scale = Vector2(0.36875, 0.36875)
+texture = ExtResource("3_1wfci")
 
 [node name="LevelingUpPanel" type="Panel" parent="."]
 anchors_preset = 8

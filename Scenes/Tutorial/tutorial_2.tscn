@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://biblu3qtdl3pc"]
+[gd_scene load_steps=17 format=3 uid="uid://biblu3qtdl3pc"]
 
 [ext_resource type="PackedScene" uid="uid://dxphaxq7vcop2" path="res://Scenes/Player/player.tscn" id="1_vhiet"]
 [ext_resource type="Texture2D" uid="uid://c5gw8nryktgw6" path="res://Assets/Sprites/tilemap_AE.png" id="2_21uyk"]
 [ext_resource type="PackedScene" uid="uid://blyyabfmt7580" path="res://Scenes/Tree/tree.tscn" id="2_gskf5"]
 [ext_resource type="Script" uid="uid://dn0exyjsg3wxk" path="res://Scripts/Tutorial/tutorial_instructions.gd" id="2_jls7v"]
 [ext_resource type="PackedScene" uid="uid://cddmmvuqlsq7f" path="res://Scenes/house.tscn" id="4_jls7v"]
+[ext_resource type="PackedScene" uid="uid://cbi1mm2rw8xyf" path="res://Scenes/Tree/wood.tscn" id="5_hpit0"]
 [ext_resource type="Script" uid="uid://ctjoevvvpde1n" path="res://Scripts/Tutorial/tutorial_tree.gd" id="6_4ocgo"]
 [ext_resource type="PackedScene" uid="uid://1mpxiaollen8" path="res://Scenes/Ennemies/Bunny/Bunny.tscn" id="7_4ocgo"]
 [ext_resource type="PackedScene" uid="uid://qm6p5ghqip04" path="res://Scenes/Ennemies/Wolf/Wolf.tscn" id="8_1eaxn"]
@@ -128,6 +129,11 @@ offset_top = 54.0
 offset_right = 108.0
 offset_bottom = 77.0
 
+[node name="Wood" parent="House" instance=ExtResource("5_hpit0")]
+z_index = -1
+position = Vector2(22.6667, 77.3333)
+scale = Vector2(0.1, 0.1)
+
 [node name="tree" parent="." instance=ExtResource("2_gskf5")]
 position = Vector2(-117, 69)
 scale = Vector2(0.75, 0.75)
@@ -168,13 +174,12 @@ position = Vector2(316, 173)
 
 [node name="TutorialRabbit" parent="." instance=ExtResource("7_4ocgo")]
 visible = false
-position = Vector2(285, -34)
+position = Vector2(317, 12)
 
 [node name="Idle" parent="TutorialRabbit/StateMachine" index="0"]
 script = ExtResource("8_dq5ub")
 
 [node name="TutorialWolf" parent="." instance=ExtResource("8_1eaxn")]
-visible = false
 position = Vector2(-3, -76)
 
 [node name="StateMachine" parent="TutorialWolf" index="1" node_paths=PackedStringArray("initial_state")]
@@ -186,6 +191,14 @@ script = ExtResource("9_4n3ja")
 [node name="WolfCollision" parent="TutorialWolf" index="3"]
 disabled = true
 
+[node name="CollisionShape2D" parent="TutorialWolf/MeatDrop/Area2D" index="0"]
+disabled = false
+
+[node name="Wolf" parent="." instance=ExtResource("8_1eaxn")]
+position = Vector2(-65, -27)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
 [connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/TutorialInstructions" method="_on_choosed_damage_pressed"]
 [connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/SpeedUp/ChoosedSpeed" to="Player/Player_UI/TutorialInstructions" method="_on_choosed_speed_pressed"]
 [connection signal="body_entered" from="tree/TreeZone" to="tree/TreeZone" method="_on_body_entered"]
@@ -198,3 +211,4 @@ disabled = true
 [editable path="House"]
 [editable path="TutorialRabbit"]
 [editable path="TutorialWolf"]
+[editable path="Wolf"]

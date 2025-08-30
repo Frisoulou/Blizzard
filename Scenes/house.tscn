@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cddmmvuqlsq7f"]
+[gd_scene load_steps=17 format=3 uid="uid://cddmmvuqlsq7f"]
 
 [ext_resource type="Texture2D" uid="uid://cobeikjqgqr" path="res://Assets/Sprites/house_up2.png" id="1_okrnj"]
 [ext_resource type="Script" uid="uid://c11jjg5heevd3" path="res://Scripts/Others/House/House.gd" id="4_iqtyj"]
 [ext_resource type="Texture2D" uid="uid://dk2r1csxkmi7q" path="res://Assets/Sprites/house_down_AE.png" id="4_l3jqw"]
 [ext_resource type="Texture2D" uid="uid://c5iqhk3bid28f" path="res://Assets/Sprites/house_middle.png" id="5_gau5j"]
 [ext_resource type="Texture2D" uid="uid://cvtdqptr3fmj8" path="res://Assets/Sprites/CampFire-ezgif.com-gif-to-sprite-converter.png" id="5_xi0mm"]
+[ext_resource type="PackedScene" uid="uid://cbi1mm2rw8xyf" path="res://Scenes/Tree/wood.tscn" id="6_bu6dc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xi0mm"]
 radius = 58.0086
@@ -66,6 +67,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3jqw"]
+size = Vector2(220, 270)
+
 [node name="House" type="StaticBody2D"]
 collision_layer = 3
 
@@ -102,12 +106,24 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Press \"E\" to use wood"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(13, 72)
-scale = Vector2(0.0625, 0.0625)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+position = Vector2(22.5, 55.9688)
+scale = Vector2(0.136719, 0.136719)
 sprite_frames = SubResource("SpriteFrames_0h1dt")
 autoplay = "default"
 frame_progress = 0.462056
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(22, 76.5)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_l3jqw")
+
+[node name="Wood" parent="StaticBody2D" instance=ExtResource("6_bu6dc")]
+z_index = -1
+position = Vector2(25, 78)
+scale = Vector2(0.1, 0.1)
 
 [connection signal="body_entered" from="HomeZone" to="HomeZone" method="_on_body_entered"]
 [connection signal="body_exited" from="HomeZone" to="HomeZone" method="_on_body_exited"]

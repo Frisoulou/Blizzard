@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbi1mm2rw8xyf"]
+
+[ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="1_54mlk"]
+
+[node name="Wood" type="Node2D"]
+
+[node name="Log1" type="Sprite2D" parent="."]
+texture = ExtResource("1_54mlk")
+
+[node name="Log2" type="Sprite2D" parent="."]
+position = Vector2(88, 0)
+texture = ExtResource("1_54mlk")
+
+[node name="Log3" type="Sprite2D" parent="."]
+position = Vector2(45, -24)
+texture = ExtResource("1_54mlk")

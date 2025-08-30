@@ -128,6 +128,8 @@ scale = Vector2(1.5, 1.5)
 [node name="Rabbit" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(-109, -33)
 
+[connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
+
 [editable path="Player"]
 [editable path="Player/Player_UI"]
 [editable path="Player/Player_UI/LevelingUpPanel/DamageUp"]
