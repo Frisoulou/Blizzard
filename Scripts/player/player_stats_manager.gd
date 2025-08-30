@@ -107,6 +107,12 @@ func _on_damage_taken():
 		game_over_screen.game_over()
 
 
+func _process(delta: float) -> void:
+	if coldness.value == 0:
+		game_over_screen.game_over()
+	if hungriness.value == 0:
+		game_over_screen.game_over()
+
 #######################
 ###Debug mode       ###
 #######################
