@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdkioutob0ds4"]
+[gd_scene load_steps=24 format=3 uid="uid://bdkioutob0ds4"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
+[ext_resource type="AudioStream" uid="uid://4h5gj8ipi5nf" path="res://Assets/Sounds/death_sound.mp3" id="3_pu2lt"]
 [ext_resource type="Script" uid="uid://chf3t6jkcdinp" path="res://Scripts/player/StateMachine.gd" id="3_xpcdj"]
 [ext_resource type="Script" uid="uid://dwh8j3aljk0uh" path="res://Scripts/player/StateIdle.gd" id="4_htcer"]
 [ext_resource type="Script" uid="uid://b6a3iqtgmy701" path="res://Scripts/player/StateWalking.gd" id="4_mtuoh"]
@@ -107,6 +108,9 @@ cold_speed = 0.75
 [node name="ColdTimer" type="Timer" parent="PlayerStatsManager"]
 
 [node name="HungryTimer" type="Timer" parent="PlayerStatsManager"]
+
+[node name="Death_sound" type="AudioStreamPlayer2D" parent="PlayerStatsManager"]
+stream = ExtResource("3_pu2lt")
 
 [node name="PlayerCollision2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.25, 4.375)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqwmg6gsjheoo"]
+[gd_scene load_steps=10 format=3 uid="uid://cqwmg6gsjheoo"]
 
 [ext_resource type="Script" uid="uid://bgemd5ab4hfry" path="res://Scripts/game_over_script.gd" id="1_1oy0g"]
 [ext_resource type="Texture2D" uid="uid://2b0tkc6fk45a" path="res://Assets/Inventory/Wood.png" id="1_uwpe7"]
 [ext_resource type="Script" uid="uid://db46dol2iupk7" path="res://Scripts/player/UI/leveling_up_panel.gd" id="3_1oy0g"]
+[ext_resource type="Texture2D" uid="uid://byqwhbu846eug" path="res://Assets/Sprites/heart.png" id="3_1wfci"]
 [ext_resource type="PackedScene" uid="uid://cqen7gt8u0m5f" path="res://Scenes/Player/Leveling_up/DamageUp.tscn" id="3_21470"]
 [ext_resource type="PackedScene" uid="uid://c0cgqkdxiidl2" path="res://Scenes/Player/Leveling_up/SpeedUp.tscn" id="4_1oy0g"]
 
@@ -139,6 +140,35 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Level : 0"
+
+[node name="Health" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="Panel/Health"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 52.0
+offset_right = 81.0
+offset_bottom = 146.0
+texture = ExtResource("3_1wfci")
+
+[node name="Heart2" type="TextureRect" parent="Panel/Health"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 52.0
+offset_right = 138.0
+offset_bottom = 146.0
+texture = ExtResource("3_1wfci")
+
+[node name="Heart3" type="TextureRect" parent="Panel/Health"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 52.0
+offset_right = 195.0
+offset_bottom = 146.0
+texture = ExtResource("3_1wfci")
 
 [node name="LevelingUpPanel" type="Panel" parent="."]
 anchors_preset = 8

@@ -1,4 +1,5 @@
 extends CanvasLayer
+@onready var death_sound: AudioStreamPlayer2D = $"../PlayerStatsManager/DeathSound"
 
 func _ready() -> void:
 	self.hide()
@@ -10,4 +11,5 @@ func _on_button_pressed() -> void:
 
 func game_over():
 	get_tree().paused = true
+	death_sound.play()
 	self.show()

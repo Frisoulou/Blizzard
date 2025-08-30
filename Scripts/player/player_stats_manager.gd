@@ -78,10 +78,32 @@ func use_wood():
 var health : int = 3
 @onready var hp_bar: Label = $"../Player_UI/HP_bar"
 @onready var game_over_screen: CanvasLayer = $"../Game_over_screen"
+@onready var hit_sound: AudioStreamPlayer2D = $Hit_sound
+@onready var heart_1: TextureRect = $"../Player_UI/Panel/Health/Heart1"
+@onready var heart_2: TextureRect = $"../Player_UI/Panel/Health/Heart2"
+@onready var heart_3: TextureRect = $"../Player_UI/Panel/Health/Heart3"
 
 func _on_damage_taken():
 	health = max(health -1, 0)
 	hp_bar.text = str(health, "/3")
+	hit_sound.play()
+	match health:
+		3:
+			heart_1.visible = true
+			heart_2.visible = true
+			heart_3.visible = true
+		2:
+			heart_1.visible = true
+			heart_2.visible = true
+			heart_3.visible = false
+		1:
+			heart_1.visible = true
+			heart_2.visible = false
+			heart_3.visible = false
+		0:
+			heart_1.visible = false
+			heart_2.visible = false
+			heart_3.visible = false
 
 	if health == 0:
 		game_over_screen.game_over()
