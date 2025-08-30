@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=27 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cqwmg6gsjheoo" path="res://Scenes/UI/Player_UI.tscn" id="8_jlvik"]
 [ext_resource type="Script" uid="uid://cr8epfmtmlqy" path="res://Scripts/player/player_stats_manager.gd" id="9_gk6dx"]
 [ext_resource type="PackedScene" uid="uid://4w3yih1y14ko" path="res://Scenes/Player/player_stats_manager_debug_panel.tscn" id="10_74mp2"]
+[ext_resource type="AudioStream" uid="uid://dh8gaxqpc7alu" path="res://Assets/Sounds/step_in_snow.mp3" id="10_dey5f"]
 [ext_resource type="Script" uid="uid://bgjvo143ly1n4" path="res://Scripts/player/UI/hp.gd" id="10_jhyir"]
 [ext_resource type="Script" uid="uid://ddaht5uttsrri" path="res://Scenes/game_over_screen.gd" id="11_74mp2"]
 
@@ -104,7 +105,7 @@ script = ExtResource("1_a3d8c")
 script = ExtResource("9_gk6dx")
 debug_mode = true
 speed = 100.0
-damage_point = 50.0
+damage_point = 10.0
 cold_speed = 0.75
 
 [node name="ColdTimer" type="Timer" parent="PlayerStatsManager"]
@@ -156,6 +157,10 @@ player = NodePath("../..")
 [node name="Walking" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("4_mtuoh")
 player = NodePath("../..")
+
+[node name="walking_sound" type="AudioStreamPlayer2D" parent="StateMachine/Walking"]
+stream = ExtResource("10_dey5f")
+volume_db = 6.0
 
 [node name="Running" type="Node" parent="StateMachine"]
 

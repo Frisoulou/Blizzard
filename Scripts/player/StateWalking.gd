@@ -4,12 +4,13 @@ extends State
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../Marker2D/AnimatedSprite2D"
 @onready var marker_2d: Marker2D = $"../../Marker2D"
 @onready var player_stats_manager: Node = $"../../PlayerStatsManager"
+@onready var walking_sound: AudioStreamPlayer2D = $walking_sound
 
 func Debug():
 	print("Changed state : walking")
 
 func Enter():
-	pass
+	walking_sound.play()
 
 func Update(delta: float):
 	animated_sprite_2d.play("Walking")

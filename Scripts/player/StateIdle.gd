@@ -2,13 +2,14 @@ extends State
 
 @export var player : CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../Marker2D/AnimatedSprite2D"
+@onready var walking_sound: AudioStreamPlayer2D = $"../Walking/walking_sound"
 
 func Debug():
 	print("changed state : idle")
 	pass
 
 func Enter():
-	pass
+	walking_sound.stop()
 
 func Update(delta: float):
 	animated_sprite_2d.play("Idle")

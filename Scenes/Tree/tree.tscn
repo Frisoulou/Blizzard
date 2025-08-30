@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://blyyabfmt7580"]
+[gd_scene load_steps=7 format=3 uid="uid://blyyabfmt7580"]
 
 [ext_resource type="Texture2D" uid="uid://bh33evfv0namm" path="res://Assets/Sprites/tree_AE.png" id="1_oyxvi"]
 [ext_resource type="Script" uid="uid://dqaufp5jlefm1" path="res://Scripts/Others/Tree/tree.gd" id="1_rx2sp"]
+[ext_resource type="AudioStream" uid="uid://bvuiuhqkmt7c1" path="res://Assets/Sounds/axe.mp3" id="3_pb44w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rx2sp"]
 bg_color = Color(0.00418771, 0.200126, 0.0952968, 1)
@@ -48,3 +49,17 @@ show_percentage = false
 visibility_layer = 3
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_rx2sp")
+
+[node name="cutting_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pb44w")
+volume_db = 20.0
+
+[node name="final_cut" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+process_priority = 1
+stream = ExtResource("3_pb44w")
+volume_db = 8.357
+pitch_scale = 0.2
+
+[connection signal="finished" from="cutting_sound" to="." method="_on_cutting_sound_finished"]
+[connection signal="finished" from="final_cut" to="." method="_on_final_cut_finished"]
