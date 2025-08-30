@@ -1,5 +1,7 @@
 extends Control
 
+@onready var main = preload("res://Scenes/main.tscn")
+
 @onready var label: Label = $Panel/Label
 @onready var player_stats_manager: Node = $"../../PlayerStatsManager"
 @onready var tutorial_rabbit: CharacterBody2D = $"../../../TutorialRabbit"
@@ -8,6 +10,7 @@ extends Control
 @onready var tutorial_wolf: CharacterBody2D = $"../../../TutorialWolf"
 @onready var player: CharacterBody2D = $"../.."
 @onready var wolf_not_moving: Node = $"../../../TutorialWolf/StateMachine/NotMoving"
+@onready var wolf_meat: Area2D = $"../../../TutorialWolf/MeatDrop/Area2D"
 
 func _ready() -> void:
 	pass
@@ -23,10 +26,20 @@ func _process(delta: float) -> void:
 		self.visible = true
 		label.text = "With time, you will also get hungry.\nTo eat, you'll need to find animals"
 	if rabbit_running.rabbit_started_running:
+		self.visible = true
 		label.text = "Animals will flee if you get too close.\n Quick, catch up !"
 	if meat.meat_has_been_picked_up:
-		label.text = "You might also encouter dangerous animals..."
+		self.visible = true
+		label.text = "You might also encouter dangerous animals...
+					  With them, you might consider fleeing,
+					  or fighting if you're brave"
 		_make_wolf_appear()
+		if (tutorial_wolf.global_position - player.global_position).length() > 300 \
+		or wolf_meat.meat_has_been_picked_up == true :
+			label.text = "Congratulation, you've finishied the tutorial ! \n
+						  Press A to start the main game."
+			if Input.is_action_just_pressed("action"):
+				get_tree().change_scene_to_packed(main)
 	
 func _on_choosed_damage_pressed() -> void:
 	tutorial_rabbit.visible = true

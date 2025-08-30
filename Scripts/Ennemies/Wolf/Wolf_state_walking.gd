@@ -20,7 +20,6 @@ func Debug():
 	pass
 
 func Enter():
-	animated_sprite_2d.play("Walking")
 	player = get_tree().get_first_node_in_group("Player")
 	random_direction()
 

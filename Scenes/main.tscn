@@ -133,3 +133,4 @@ position = Vector2(-109, -33)
 [editable path="Player/Player_UI/LevelingUpPanel/DamageUp"]
 [editable path="Player/Player_UI/LevelingUpPanel/SpeedUp"]
 [editable path="Wolf"]
+[editable path="House"]

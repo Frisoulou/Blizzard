@@ -12,7 +12,6 @@ func Debug():
 	pass
 
 func Enter():
-	print("Rabbit state : dead")
 	rabbit.velocity = Vector2(0, 0)
 	animated_sprite_2d.visible = false
 	progress_bar.visible = false

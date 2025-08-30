@@ -14,7 +14,6 @@ func Debug():
 	pass
 
 func Enter():
-	animated_sprite_2d.play("Attacking")
 	attack_length_timer.start(attack_length)
 	
 func Physics_update(delta: float) -> void:

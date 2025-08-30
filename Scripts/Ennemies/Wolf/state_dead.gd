@@ -13,7 +13,6 @@ func Debug():
 	pass
 
 func Enter():
-	print("wolf state : dead")
 	wolf.velocity = Vector2(0, 0)
 	animated_sprite_2d.visible = false
 	progress_bar.visible = false
