@@ -219,15 +219,15 @@ show_percentage = false
 
 [node name="MeatDrop" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, 8)
-scale = Vector2(0.1, 0.1)
+position = Vector2(0, 7)
+scale = Vector2(0.3625, 0.3625)
 texture = ExtResource("7_u8olo")
 
 [node name="Area2D" type="Area2D" parent="MeatDrop"]
 script = ExtResource("9_7t2lv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeatDrop/Area2D"]
-position = Vector2(1.52588e-05, 3.05176e-05)
+position = Vector2(0, 7.62939e-06)
 shape = SubResource("CircleShape2D_v44t5")
 disabled = true
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3jh1snvp8d0y"]
+[gd_scene load_steps=6 format=3 uid="uid://d3jh1snvp8d0y"]
 
 [ext_resource type="Script" uid="uid://bspmrs2drs4rj" path="res://Scenes/main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://beu6r13nkl1la" path="res://Assets/logo.png" id="2_48xlc"]
 
 [sub_resource type="Gradient" id="Gradient_erv1k"]
 offsets = PackedFloat32Array(0.232143, 0.72619)
@@ -9,6 +10,9 @@ metadata/_snap_count = 2
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_28flt"]
 gradient = SubResource("Gradient_erv1k")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -27,21 +31,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_28flt")
-
-[node name="Label" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 898.0
-offset_top = 307.0
-offset_right = -143.0
-offset_bottom = -330.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "Blizzard"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -81,6 +70,27 @@ theme_override_font_sizes/font_size = 50
 text = "Quit"
 flat = true
 
+[node name="Credits" type="Button" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Credits
+"
+flat = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 874.0
+offset_top = 513.0
+offset_right = 1148.0
+offset_bottom = 759.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ehe0")
+
+[node name="Logo" type="Sprite2D" parent="Panel"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_48xlc")
+
 [connection signal="pressed" from="VBoxContainer/Start-Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Start-No-tuto" to="." method="_on_start_notuto_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]

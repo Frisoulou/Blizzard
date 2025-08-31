@@ -60,7 +60,7 @@ text = "Congratulation, you leveled up !
 Leveling up let you increase your stats
 Choose one of the following."
 
-[node name="StatsDebugPanel" parent="Player/Player_UI" index="2"]
+[node name="StatsDebugPanel" parent="Player/Player_UI" index="3"]
 visible = false
 
 [node name="DegugButton" parent="Player/Player_UI" index="4"]
@@ -186,7 +186,6 @@ script = ExtResource("9_4n3ja")
 [node name="WolfCollision" parent="TutorialWolf" index="3"]
 disabled = true
 
-[connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/LevelingUpPanel" method="_on_choosed_damage_pressed"]
 [connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/DamageUp/ChoosedDamage" to="Player/Player_UI/TutorialInstructions" method="_on_choosed_damage_pressed"]
 [connection signal="pressed" from="Player/Player_UI/LevelingUpPanel/SpeedUp/ChoosedSpeed" to="Player/Player_UI/TutorialInstructions" method="_on_choosed_speed_pressed"]
 [connection signal="body_entered" from="tree/TreeZone" to="tree/TreeZone" method="_on_body_entered"]

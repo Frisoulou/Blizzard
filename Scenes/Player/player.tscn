@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dxphaxq7vcop2"]
+[gd_scene load_steps=31 format=3 uid="uid://dxphaxq7vcop2"]
 
 [ext_resource type="Script" uid="uid://bl5n7do8te81p" path="res://Scripts/player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cgmvn765a4k6f" path="res://Assets/Sprites/player_anim_AE.png" id="2_gk6dx"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://ddaht5uttsrri" path="res://Scenes/game_over_screen.gd" id="11_74mp2"]
 [ext_resource type="Script" uid="uid://8ieumravnc4r" path="res://Scripts/player/cinematic.gd" id="12_ks1b7"]
 [ext_resource type="AudioStream" uid="uid://ci2u5gca0k3ei" path="res://Assets/Sounds/upgrade.mp3" id="13_r5xpd"]
+[ext_resource type="PackedScene" uid="uid://idot5ucby8h4" path="res://Scenes/UI/Victory_screen.tscn" id="16_hnuln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnuln"]
 size = Vector2(12.5, 14.75)
@@ -220,6 +221,9 @@ offset_top = 682.0
 offset_right = 1274.0
 offset_bottom = 713.0
 text = "Debug"
+
+[node name="Victory_screen" parent="Player_UI" instance=ExtResource("16_hnuln")]
+visible = false
 
 [node name="HP" type="Node" parent="." groups=["Player"]]
 script = ExtResource("10_jhyir")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgg5n2n7bv2f"]
+
+[ext_resource type="Script" uid="uid://x0khf3up821j" path="res://Scripts/player/UI/credits.gd" id="1_eg3jt"]
+[ext_resource type="PackedScene" uid="uid://d3jh1snvp8d0y" path="res://Scenes/main_menu.tscn" id="1_habdp"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eg3jt")
+
+[node name="Control" parent="." instance=ExtResource("1_habdp")]
+layout_mode = 1
+script = null
+
+[node name="VBoxContainer" parent="Control" index="2"]
+visible = false
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 166.0
+offset_right = 797.0
+offset_bottom = 506.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "A game by Frisoulou and TheRealAEgir
+
+Last minute village pixel art by Azayda
+Last minute custom music by Kodama
+
+As you could imagine, the game isn't really finished.
+It's our very first project, so be indulgent ;)"
+
+[node name="BackToMain" type="Button" parent="."]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 538.0
+offset_right = 440.0
+offset_bottom = 588.0
+theme_override_font_sizes/font_size = 20
+text = "Back to main"
+
+[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
+
+[editable path="Control"]

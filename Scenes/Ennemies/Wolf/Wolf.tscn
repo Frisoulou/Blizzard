@@ -205,9 +205,8 @@ value = 50.0
 show_percentage = false
 
 [node name="MeatDrop" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, 8)
-scale = Vector2(0.15, 0.15)
+position = Vector2(7.3, 0.7)
+scale = Vector2(0.60625, 0.60625)
 texture = ExtResource("7_dqj7f")
 
 [node name="Area2D" type="Area2D" parent="MeatDrop"]
